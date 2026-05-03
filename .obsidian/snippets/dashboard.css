@@ -1,36 +1,23 @@
 /* ==========================================================
    Dashboard styles — для заметок с cssclasses: [dashboard]
-   Применяется к 🏠 Home.md в Reading View
-   Кнопки реализованы через Meta Bind плагин
-
-   ── ПАЛИТРА ──────────────────────────────────────────────
-   #2459B8  — заголовки H1, callout titles, кнопки
-   #e5e4e2  — фон дашбордов (panels/callouts/cards)
-   #0F1724  — текст в таблицах (th и td) + заголовки таблиц
-   ────────────────────────────────────────────────────────
+   Цвет акцента (заголовки + кнопки): #2459B8
    ========================================================== */
+.dashboard { --db-accent: #2459B8; }
 
-.dashboard {
-  --db-title:  #2459B8;
-  --db-panel:  #e5e4e2;
-  --db-table:  #0F1724;
+.dashboard .mb-button button svg,
+.dashboard .mb-button button .svg-icon {
+  color: var(--db-accent) !important;
+  stroke: var(--db-accent) !important;
 }
-
-/* Заголовки */
 .dashboard h1::after,
-.dashboard h1,
+.dashboard h2,
 .dashboard .callout[data-callout="card"] .callout-title,
-.dashboard h2 { color: var(--db-title) !important; -webkit-text-fill-color: var(--db-title) !important; background: none !important; }
-
-/* Фон дашбордов */
-.dashboard .callout[data-callout="card"],
-.dashboard .block-language-dataview,
-.dashboard p:has(.mb-button) { background: var(--db-panel) !important; }
-
-/* Таблицы */
-.dashboard .block-language-dataview th,
-.dashboard .block-language-dataview td,
-.dashboard .block-language-dataview li { color: var(--db-table) !important; }
+.dashboard .mb-button button {
+  color: var(--db-accent) !important;
+  -webkit-text-fill-color: var(--db-accent) !important;
+  background: none !important;
+  background-clip: initial !important;
+}
 
 /* Скрываем frontmatter properties и inline title */
 .dashboard .metadata-container,
