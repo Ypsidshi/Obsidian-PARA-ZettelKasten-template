@@ -4,59 +4,7 @@ cssclasses: [home, dashboard]
 obsidianUIMode: preview
 ---
 
-# Second Brain
-
-> Обработка → Хранение → Связи → Запоминание
-
-`BUTTON[open_daily]` `BUTTON[open_inbox]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
-
-> [!card] Inbox
-> ```dataview
-> LIST
-> FROM "1 HUB/Inbox"
-> SORT file.ctime DESC
-> LIMIT 10
-> ```
-
-> [!card] Сейчас читаю
-> ```dataview
-> TABLE without id
->   file.link as "Заметка",
->   author as "Автор",
->   progress as "Прогресс"
-> FROM "3 ZETTA/Literature"
-> WHERE type = "literature" AND status = "reading"
-> SORT file.mtime DESC
-> ```
-
-> [!card] Последние Permanent
-> ```dataview
-> LIST
-> FROM ""
-> WHERE type = "permanent"
->   AND !contains(file.path, "Templates")
-> SORT file.ctime DESC
-> LIMIT 7
-> ```
-
-> [!card] Карты тем
-> ```dataview
-> LIST
-> FROM "1 HUB/MOCs"
-> WHERE type = "moc"
-> SORT file.name ASC
-> ```
-
-> [!card] Статистика
-> ```dataview
-> TABLE WITHOUT ID
->   type as "Тип",
->   length(rows) as "Кол-во"
-> FROM ""
-> WHERE type
->   AND !contains(file.path, "Templates")
-> GROUP BY type SORT length(rows) DESC
-> ```
+<div style="display:none">
 
 ```meta-bind-button
 label: Daily
@@ -128,3 +76,59 @@ actions:
   - type: command
     command: omnisearch:show-modal
 ```
+
+</div>
+
+# Second Brain
+
+> Обработка → Хранение → Связи → Запоминание
+
+`BUTTON[open_daily]` `BUTTON[open_inbox]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
+
+> [!card] Inbox
+> ```dataview
+> LIST
+> FROM "1 HUB/Inbox"
+> SORT file.ctime DESC
+> LIMIT 10
+> ```
+
+> [!card] Сейчас читаю
+> ```dataview
+> TABLE without id
+>   file.link as "Заметка",
+>   author as "Автор",
+>   progress as "Прогресс"
+> FROM "3 ZETTA/Literature"
+> WHERE type = "literature" AND status = "reading"
+> SORT file.mtime DESC
+> ```
+
+> [!card] Последние Permanent
+> ```dataview
+> LIST
+> FROM ""
+> WHERE type = "permanent"
+>   AND !contains(file.path, "Templates")
+> SORT file.ctime DESC
+> LIMIT 7
+> ```
+
+> [!card] Карты тем
+> ```dataview
+> LIST
+> FROM "1 HUB/MOCs"
+> WHERE type = "moc"
+> SORT file.name ASC
+> ```
+
+> [!card] Статистика
+> ```dataview
+> TABLE WITHOUT ID
+>   type as "Тип",
+>   length(rows) as "Кол-во"
+> FROM ""
+> WHERE type
+>   AND !contains(file.path, "Templates")
+> GROUP BY type SORT length(rows) DESC
+> ```
