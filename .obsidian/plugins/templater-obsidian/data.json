@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "90 Meta/Templates",
+  "templates_folder": "SYSTEM/Templates",
   "templates_pairs": [
     [
       "",
@@ -15,20 +15,24 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "00 Inbox",
-      "template": "90 Meta/Templates/Fleeting.md"
+      "folder": "HUB/Inbox",
+      "template": "SYSTEM/Templates/Fleeting.md"
     },
     {
-      "folder": "30 Resources/Literature",
-      "template": "90 Meta/Templates/Literature.md"
+      "folder": "ZETTA/Literature",
+      "template": "SYSTEM/Templates/Literature.md"
     },
     {
-      "folder": "90 Meta/MOCs",
-      "template": "90 Meta/Templates/MOC.md"
+      "folder": "HUB/MOCs",
+      "template": "SYSTEM/Templates/MOC.md"
     },
     {
-      "folder": "70 Flashcards",
-      "template": "90 Meta/Templates/Flashcard.md"
+      "folder": "ZETTA/Flashcards",
+      "template": "SYSTEM/Templates/Flashcard.md"
+    },
+    {
+      "folder": "ZETTA/Permanent",
+      "template": "SYSTEM/Templates/Permanent.md"
     }
   ],
   "enable_file_templates": false,

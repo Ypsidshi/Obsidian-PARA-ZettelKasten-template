@@ -13,7 +13,7 @@
       "folder": {
         "enabled": true,
         "folders": [
-          "ZETTEL/Permanent"
+          "ZETTA/Permanent"
         ],
         "chooseWhenCreatingNote": false,
         "createInSameFolderAsActiveFile": false,
@@ -43,7 +43,7 @@
       "folder": {
         "enabled": true,
         "folders": [
-          "ZETTEL/Literature"
+          "ZETTA/Literature"
         ],
         "chooseWhenCreatingNote": false,
         "createInSameFolderAsActiveFile": false,
