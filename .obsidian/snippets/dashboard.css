@@ -1,6 +1,9 @@
 /* ==========================================================
-   Dashboard styles — для заметок с cssclasses: [dashboard]
-   Цвет акцента (заголовки + кнопки): #2459B8
+   Dashboard — cssclasses в frontmatter заметки:
+   • Home:              [home, dashboard]
+   • Fleeting hub:      [dashboard, key-page, key-page-fleeting]
+   • Главный MOC:       [dashboard, key-page, key-page-moc]
+   Акцент заголовков / H2 / Dataview: #2459B8 (Lucide-иконки ЧБ через mask)
    ========================================================== */
 .dashboard { --db-accent: #2459B8; }
 
@@ -9,7 +12,6 @@
   color: var(--db-accent) !important;
   stroke: var(--db-accent) !important;
 }
-.dashboard h1::after,
 .dashboard h2,
 .dashboard .callout[data-callout="card"] .callout-title,
 .dashboard .mb-button button {
@@ -36,8 +38,8 @@
   margin: 0 auto !important;
 }
 
-/* Главный заголовок — тёмно-синий градиент + иконка мозга */
-.dashboard h1 {
+/* ---------- Home: заголовок Second Brain + иконка мозга ---------- */
+.dashboard.home h1 {
   font-size: 2.4em;
   font-weight: 700;
   text-align: center;
@@ -50,8 +52,7 @@
   gap: 14px;
 }
 
-/* Текст заголовка с градиентом */
-.dashboard h1::after {
+.dashboard.home h1::after {
   content: "Second Brain";
   background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-hover) 100%);
   -webkit-background-clip: text;
@@ -59,17 +60,15 @@
   background-clip: text;
 }
 
-/* Скрываем оригинальный текст H1, показываем только через ::after */
-.dashboard h1 {
+.dashboard.home h1 {
   font-size: 0;
 }
-.dashboard h1::before,
-.dashboard h1::after {
+.dashboard.home h1::before,
+.dashboard.home h1::after {
   font-size: 2.4rem;
 }
 
-/* Иконка мозга — монохромная, цвет в тон градиенту */
-.dashboard h1::before {
+.dashboard.home h1::before {
   content: "";
   display: inline-block;
   width: 1em;
@@ -80,6 +79,54 @@
   -webkit-mask-size: contain;
           mask-size: contain;
   vertical-align: middle;
+}
+
+/* ---------- Ключевые страницы (hub, корневой MOC): синий H1, текст из заметки, иконка Lucide ЧБ ---------- */
+.dashboard.key-page h1 {
+  font-size: 2.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--db-accent) !important;
+  -webkit-text-fill-color: var(--db-accent) !important;
+}
+
+.dashboard.key-page h1::after {
+  content: none !important;
+}
+
+.dashboard.key-page h1::before {
+  content: "";
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  background-color: var(--db-accent);
+  opacity: 0.92;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+/* Fleeting hub — lucide:inbox */
+.dashboard.key-page.key-page-fleeting h1::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
+}
+
+/* Главный MOC — lucide:map */
+.dashboard.key-page.key-page-moc h1::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
 }
 
 /* Подзаголовок-цитата */
@@ -125,7 +172,8 @@
   opacity: 0.8;
 }
 
-/* Inbox — lucide:inbox */
+/* Fleeting — lucide:inbox */
+.dashboard h2[data-heading="Fleeting"]::before,
 .dashboard h2[data-heading="Inbox"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
@@ -153,6 +201,22 @@
 .dashboard h2[data-heading="Статистика"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
+}
+
+/* Fleeting hub / MOC — доп. секции */
+.dashboard h2[data-heading="Очередь"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='8' y1='6' x2='21' y2='6'/><line x1='8' y1='12' x2='21' y2='12'/><line x1='8' y1='18' x2='21' y2='18'/><line x1='3' y1='6' x2='3.01' y2='6'/><line x1='3' y1='12' x2='3.01' y2='12'/><line x1='3' y1='18' x2='3.01' y2='18'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='8' y1='6' x2='21' y2='6'/><line x1='8' y1='12' x2='21' y2='12'/><line x1='8' y1='18' x2='21' y2='18'/><line x1='3' y1='6' x2='3.01' y2='6'/><line x1='3' y1='12' x2='3.01' y2='12'/><line x1='3' y1='18' x2='3.01' y2='18'/></svg>");
+}
+
+.dashboard h2[data-heading="Тематические карты"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='2' y1='12' x2='22' y2='12'/><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='2' y1='12' x2='22' y2='12'/><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/></svg>");
+}
+
+.dashboard h2[data-heading="Все MOC"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
 }
 
 .dashboard hr { display: none; }

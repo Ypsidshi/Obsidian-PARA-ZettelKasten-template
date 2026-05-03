@@ -26,7 +26,7 @@ SYSTEM/Templates
 | ZETTA/Permanent | SYSTEM/Templates/Permanent.md |
 | ZETTA/Literature | SYSTEM/Templates/Literature.md |
 | ZETTA/Flashcards | SYSTEM/Templates/Flashcard.md |
-| HUB/Inbox | SYSTEM/Templates/Fleeting.md |
+| ZETTA/FLEETING | SYSTEM/Templates/Fleeting.md |
 
 **Иконки шаблонов:**
 ```json
@@ -110,14 +110,14 @@ SYSTEM/Templates
 }
 ```
 
-**Choice 3: New Fleeting Note**
+**Choice 3: New Fleeting**
 ```json
 {
   "type": "Template",
   "name": "New Fleeting",
   "templatePath": "SYSTEM/Templates/Fleeting.md",
-  "folder": "HUB/Inbox",
-  "fileNameFormat": "{{DATE:YYYY-MM-DD HH:mm}} {{VALUE:Суть идеи}}"
+  "folder": "ZETTA/FLEETING",
+  "fileNameFormat": "{{VALUE:Название заметки}}"
 }
 ```
 
@@ -174,6 +174,8 @@ SYSTEM/Templates
 ### 5. **Meta Bind** (v0.30.0+)
 Создание интерактивных кнопок на Dashboard.
 
+Для действия `open` с типом `link` указывай **существующую** заметку по пути (например `[[ZETTA/FLEETING/Fleeting hub]]`), иначе Obsidian может создать пустой файл с «похожим» именем.
+
 **Dashboard buttons в HUB/🏠 Home.md:**
 
 Кнопки должны быть определены в начале файла:
@@ -209,11 +211,11 @@ SORT created DESC
 LIMIT 5
 ```
 
-Заметки в обработке:
+Заметки в обработке (fleeting):
 ```dataview
 LIST
-FROM "HUB/Inbox"
-WHERE contains(tags, "to-process")
+FROM "ZETTA/FLEETING"
+WHERE contains(tags, "to-process") AND file.name != "Fleeting hub"
 ```
 
 Текущие проекты:

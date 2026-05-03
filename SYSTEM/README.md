@@ -5,9 +5,9 @@ Obsidian-шаблон: Zettelkasten + PARA, без задач (они в Microso
 ## Структура
 
 ```
-HUB/      — главный хаб, Inbox, MOCs
+HUB/      — Dashboard (🏠 Home), MOCs
 PARA/     — Projects · Areas · Resources · Archive
-ZETTA/    — Permanent · Literature · Flashcards
+ZETTA/    — FLEETING (черновики) · Permanent · Literature · Flashcards
 DAILY/    — Daily · Weekly · Monthly
 SYSTEM/   — Templates · Excalidraw · Attachments · Setup.md · Guide.md
 ```
@@ -16,7 +16,10 @@ SYSTEM/   — Templates · Excalidraw · Attachments · Setup.md · Guide.md
 
 ## Палитра дашборда
 
-CSS-сниппет: `.obsidian/snippets/dashboard.css`. Применяется к заметкам с `cssclasses: [dashboard]` в frontmatter.
+CSS-сниппет: `.obsidian/snippets/dashboard.css`.
+
+- **Home:** `cssclasses: [home, dashboard]` — заголовок Second Brain, панель кнопок, секции.
+- **Ключевые hub-страницы** (тот же синий акцент, карточки Dataview, без эмодзи): `cssclasses: [dashboard, key-page, key-page-fleeting]` для [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]] и `[dashboard, key-page, key-page-moc]` для [[HUB/MOCs/Главный MOC|Главный MOC]].
 
 
 Не используется:

@@ -1,11 +1,11 @@
 ---
-created: <% tp.date.now("YYYY-MM-DD HH:mm") %>
+created: 2026-05-02 11:46
 type: permanent
 tags: []
-status: seed
+status: draft
 ---
 
-# <% tp.file.title %>
+# Weekly
 
 ## 💡 Идея
 *Сформулируй своими словами в 1–3 предложениях. Одна заметка — одна мысль.*

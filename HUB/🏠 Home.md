@@ -8,12 +8,13 @@ obsidianUIMode: preview
 
 > Обработка → Хранение → Связи → Запоминание
 
-`BUTTON[open_daily]` `BUTTON[open_inbox]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
+`BUTTON[open_daily]` `BUTTON[open_fleeting]` `BUTTON[new_fleeting]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
 
-## Inbox
+## Fleeting
 ```dataview
 LIST
-FROM "HUB/Inbox"
+FROM "ZETTA/FLEETING"
+WHERE file.name != "Fleeting hub"
 SORT file.ctime DESC
 LIMIT 10
 ```
@@ -24,7 +25,7 @@ TABLE without id
   file.link as "Заметка",
   author as "Автор",
   progress as "Прогресс"
-FROM "ZETTEL/Literature"
+FROM "ZETTA/Literature"
 WHERE type = "literature" AND status = "reading"
 SORT file.mtime DESC
 ```
@@ -32,7 +33,7 @@ SORT file.mtime DESC
 ## Последние Permanent
 ```dataview
 LIST
-FROM ""
+FROM "ZETTA/Permanent"
 WHERE type = "permanent"
   AND !contains(file.path, "Templates")
 SORT file.ctime DESC
@@ -42,7 +43,7 @@ LIMIT 7
 ## Карты тем
 ```dataview
 LIST
-FROM "SYSTEM/MOCs"
+FROM "HUB/MOCs"
 WHERE type = "moc"
 SORT file.name ASC
 ```
@@ -72,15 +73,27 @@ actions:
 ```
 
 ```meta-bind-button
-label: Inbox
+label: Fleeting hub
 icon: lucide-inbox
 hidden: true
-id: open_inbox
+id: open_fleeting
 style: default
-tooltip: Открыть папку Inbox
+tooltip: Открыть хаб FLEETING
 actions:
   - type: open
-    link: "[[HUB/Inbox]]"
+    link: "[[ZETTA/FLEETING/Fleeting hub]]"
+```
+
+```meta-bind-button
+label: Fleeting
+icon: lucide-pen-line
+hidden: true
+id: new_fleeting
+style: primary
+tooltip: Создать новую Fleeting-заметку
+actions:
+  - type: command
+    command: quickadd:choice:a8f3c2d1-5e4b-4a7c-9f0e-2d1c3b4a596e
 ```
 
 ```meta-bind-button
@@ -128,7 +141,7 @@ style: primary
 tooltip: Открыть Главный MOC
 actions:
   - type: open
-    link: "[[🗺️ Главный MOC]]"
+    link: "[[HUB/MOCs/Главный MOC|Главный MOC]]"
 ```
 
 ```meta-bind-button

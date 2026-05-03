@@ -10,7 +10,20 @@
       "mode": "any"
     }
   ],
-  "fileMenu": [],
+  "fileMenu": [
+    {
+      "id": "markdown:toggle-preview",
+      "icon": "lucide-book-open",
+      "name": "Toggle reading view",
+      "mode": "any"
+    },
+    {
+      "id": "markdown:toggle-preview",
+      "icon": "lucide-book-open",
+      "name": "Toggle reading view",
+      "mode": "any"
+    }
+  ],
   "leftRibbon": [],
   "rightRibbon": [],
   "titleBar": [],

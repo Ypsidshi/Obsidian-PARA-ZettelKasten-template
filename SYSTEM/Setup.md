@@ -12,7 +12,7 @@ tags: [system, setup, installation]
 Хранилище должно содержать папки:
 - **HUB** — Dashboard и центральная навигация
 - **PARA** — Projects, Areas, Resources, Archive
-- **ZETA** — Zettelkasten (атомные заметки)
+- **ZETTA** — Zettelkasten: `Permanent`, `Literature`, `Flashcards`, **`FLEETING`** (быстрые черновики; хаб `ZETTA/FLEETING/Fleeting hub.md`)
 - **DAILY** — Ежедневные заметки
 - **SYSTEM** — Шаблоны, гайды, настройки
 
@@ -51,12 +51,16 @@ tags: [system, setup, installation]
 
 ## 5. Настройка QuickAdd
 
-В Settings → QuickAdd:
-- Choice №1: Permanent Note → Template: `SYSTEM/Templates/Permanent.md`
-- Choice №2: Literature Note → Template: `SYSTEM/Templates/Literature.md`
-- Choice №3: Fleeting Note → Template: `SYSTEM/Templates/Fleeting.md`
+В Settings → QuickAdd (или через правку `.obsidian/plugins/quickadd/data.json`):
+- Choice №1 **New Permanent** → `SYSTEM/Templates/Permanent.md` → папка `ZETTA/Permanent`
+- Choice №2 **New Literature** → `SYSTEM/Templates/Literature.md` → папка `ZETTA/Literature`
+- Choice №3 **New Fleeting** → `SYSTEM/Templates/Fleeting.md` → папка `ZETTA/FLEETING`, имя файла `{{VALUE:Название заметки}}`
 
-Создать hotkey для быстрого открытия QuickAdd
+У каждого из этих choice в JSON должно быть **`"command": true`** (в UI — молния «добавить в командную палитру»), иначе кнопки Meta Bind с `quickadd:choice:<uuid>` на Home не сработают.
+
+Создать hotkey для быстрого открытия QuickAdd (`Ctrl+Shift+A`).
+
+В **Settings → Files & links** (если включено «создавать новые заметки в папке»): папка по умолчанию = **`ZETTA/FLEETING`** (см. также `.obsidian/app.json`: `newFileFolderPath`).
 
 ## 6. Настройка Homepage
 
@@ -67,11 +71,13 @@ tags: [system, setup, installation]
 
 ## 7. Настройка Custom Sort
 
-Создать файл `.sortspec` в корне хранилища:
+Порядок папок задаётся **либо** закладкой/группой в Obsidian (как у тебя с именем `sortspec`), **либо** текстовым файлом `.sortspec` в корне vault — не обязательно и то и другое; лишний файл в корне может перебить порядок из закладок.
+
+Пример содержимого `.sortspec`, если выбираешь именно файл:
 ```
 HUB
 PARA
-ZETA
+ZETTA
 DAILY
 SYSTEM
 ```
@@ -106,7 +112,7 @@ SYSTEM
 Для использования в шаблонах:
 ```dataview
 LIST
-FROM "ZETA"
+FROM "ZETTA"
 WHERE type = "permanent"
 SORT created DESC
 LIMIT 5
@@ -119,21 +125,21 @@ LIMIT 5
 BUTTON[id]
 ```
 
-Кнопки:
+Кнопки (см. актуальные `id` в `HUB/🏠 Home.md`):
 - Daily Note
-- Quick Inbox
-- New Permanent
-- New Literature
-- Flashcards
-- MOCs
+- Открыть **Fleeting hub** (`[[ZETTA/FLEETING/Fleeting hub]]`, не вики на несуществующий файл)
+- New Fleeting (QuickAdd choice)
+- New Permanent / New Literature
+- Flashcards (SRS)
+- Главный MOC (`[[HUB/MOCs/Главный MOC|…]]` по имени файла)
 - Omnisearch
 
 ## 12. Сортировка папок (без префиксов)
 
-Используется Custom Sort плагин. Папки автоматически сортируются по `.sortspec`:
+Используется Custom Sort плагин. Порядок берётся из твоей конфигурации плагина (закладки и/или `.sortspec`):
 - HUB первая
 - PARA вторая
-- ZETA третья
+- ZETTA третья
 - DAILY четвёртая
 - SYSTEM последняя
 
@@ -144,6 +150,6 @@ BUTTON[id]
 3. Создать первую ежедневную заметку (Ctrl+D или через кнопку)
 4. Проверить Dashboard на `HUB/🏠 Home.md`
 5. Убедиться, что все кнопки работают
-6. Добавить первую заметку в ZETA через "New Permanent"
+6. Добавить первую заметку в ZETTA через "New Permanent"
 
 После этого система готова к использованию!

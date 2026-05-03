@@ -2,21 +2,27 @@
 created: 2026-05-02
 type: moc
 tags: [moc, moc/root]
+cssclasses: [dashboard, key-page, key-page-moc]
+obsidianUIMode: preview
 ---
 
-# 🗺️ Главный MOC
+# Главный MOC
 
-> Точка входа во все темы. Отсюда расходится дерево знаний.
+> Точка входа в темы и карты содержания.
+>
+> Куда дальше: [[HUB/🏠 Home|Домой]] — [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]]
 
-## 🌳 Тематические карты
-*Здесь по мере роста базы появятся ссылки на MOC по каждой большой теме (Программирование, ML, и т.д.)*
+## Тематические карты
+
+*По мере роста базы добавляй ссылки на MOC по крупным темам.*
 
 - 
 
-## 📥 Все MOC vault'а (авто)
+## Все MOC
+
 ```dataview
 LIST
-FROM "SYSTEM/MOCs"
+FROM "HUB/MOCs"
 WHERE type = "moc" AND file.name != this.file.name
 SORT file.name ASC
 ```

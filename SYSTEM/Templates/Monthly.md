@@ -13,11 +13,11 @@ tags: [periodic/monthly]
 prev-month: "[[<% prevMonth %>]]"
 ---
 
-# 🗓️ <% monthName %>
+# [MONTH] <% monthName %>
 
 ← [[<% prevMonth %>|Прошлый месяц]] | [[<% nextMonth %>|Следующий месяц]] →
 
-## 🔄 Что я обещал изменить в прошлом месяце
+## [CYCLE] Что я обещал изменить в прошлом месяце
 *(подтягивается из прошлого Monthly — перечитай и оцени)*
 ```dataview
 LIST without id L.text
@@ -26,10 +26,10 @@ FLATTEN file.lists as L
 WHERE contains(L.section.subpath, "Что меняю")
 ```
 
-## 🎯 Цели месяца
+## [GOALS] Цели месяца
 
 
-## 📊 Статистика
+## [STATS] Статистика
 ```dataview
 TABLE length(rows) as "Создано"
 FROM ""
@@ -50,7 +50,7 @@ WHERE type = "permanent"
 SORT file.ctime ASC
 ```
 
-## 📚 Прочитано в этом месяце
+## [BOOKS] Прочитано в этом месяце
 ```dataview
 LIST
 FROM ""
@@ -59,10 +59,10 @@ WHERE type = "literature" AND status = "done"
   AND file.mday.month = <% monthNum %>
 ```
 
-## 🌟 Главные уроки месяца
+## [KEY LESSONS] Главные уроки месяца
 *3–5 пунктов. Что я понял, чего не знал месяц назад. Конкретно.*
 - 
 
-## 🔄 Что меняю в следующем месяце
+## [CYCLE] Что меняю в следующем месяце
 *Конкретные изменения. Не "буду больше читать", а "ставлю напоминание читать 20 минут после завтрака".*
 - 

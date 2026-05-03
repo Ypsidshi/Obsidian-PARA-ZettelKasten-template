@@ -15,25 +15,26 @@ week: "[[<% week %>]]"
 month: "[[<% month %>]]"
 ---
 
-# 📅 <% heading %>
+# [DATE] <% heading %>
 
 ← [[<% yesterday %>|Вчера]] | [[<% tomorrow %>|Завтра]] →
 
-## 🎯 Фокус дня
+## [FOCUS] Фокус дня
 *Что сегодня главное? Одна-две вещи. Не задачи, а намерение.*
 
 
-## 📝 Заметки и мысли
+## [NOTES] Заметки и мысли
 
 
-## 📥 Inbox сейчас
+## [FLEETING] Fleeting сейчас
 ```dataview
 LIST
-FROM "HUB/Inbox"
+FROM "ZETTA/FLEETING"
+WHERE file.name != "Fleeting hub"
 SORT file.ctime ASC
 ```
 
-## 🔗 Заметки, созданные сегодня
+## [LINKS] Заметки, созданные сегодня
 ```dataview
 LIST
 FROM ""
@@ -43,7 +44,7 @@ WHERE file.cday = date("<% today %>")
 SORT file.ctime ASC
 ```
 
-## 🎴 Карточки на сегодня
+## [CARDS] Карточки на сегодня
 *`Ctrl+Shift+R` — начать повторение*
 
-## 🌙 Итог дня
+## [SUMMARY] Итог дня

@@ -15,7 +15,7 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "HUB/Inbox",
+      "folder": "ZETTA/FLEETING",
       "template": "SYSTEM/Templates/Fleeting.md"
     },
     {

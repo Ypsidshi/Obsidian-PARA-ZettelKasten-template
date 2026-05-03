@@ -7,7 +7,7 @@ tags: [system, guide, hotkeys, workflows]
 
 Практическое руководство по использованию ZettelKasten + PARA в Obsidian.
 
-## 🎯 Основные горячие клавиши
+## [HOTKEYS] Основные горячие клавиши
 
 | Действие | Hotkey |
 |----------|--------|
@@ -23,20 +23,20 @@ tags: [system, guide, hotkeys, workflows]
 
 > Customize в Settings → Hotkeys
 
-## 📅 Workflow: День, Неделя, Месяц
+## [WORKFLOW] Workflow: День, Неделя, Месяц
 
 ### Ежедневный workflow
 
 1. **Утром** (при открытии Obsidian)
    - Открывается Dashboard автоматически
    - Нажми "Daily Note" или используй `Ctrl+Shift+D`
-   - Увидишь: inbox, план на день, заметки из вчера
+   - Увидишь: список FLEETING, план на день, заметки из вчера
 
 2. **В течение дня**
-   - Быстрая идея? → QuickAdd (Fleeting Note)
-   - Прочитал интересное? → Literature Note
-   - Разработал мысль? → Permanent Note
-   - Все заметки автоматически появляются в Inbox на Daily Note
+   - Быстрая идея? → QuickAdd: **New Fleeting** (или кнопка на Home)
+   - Прочитал интересное? → QuickAdd: **New Literature**
+   - Разработал мысль? → QuickAdd: **New Permanent**
+   - Новые fleeting попадают в `ZETTA/FLEETING` и отображаются в блоке Fleeting на Daily Note
 
 3. **Вечером**
    - Обзор Daily Note
@@ -64,7 +64,7 @@ tags: [system, guide, hotkeys, workflows]
 - Статистика обучения
 - План на месяц вперёд
 
-## 🗂️ PARA структура
+## [PARA] PARA структура
 
 Используй для организации проектов и идей:
 
@@ -96,7 +96,9 @@ tags: [system, guide, hotkeys, workflows]
 ### Archive (Архив)
 Завершённые проекты и неактуальные области.
 
-## 🔗 Zettelkasten в ZETA
+## [ZETTEL] Zettelkasten в ZETTA
+
+**Fleeting** (`ZETTA/FLEETING/`) — быстрые черновики до разбора; якорная страница [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]] оформлена как мини-дашборд (`cssclasses: dashboard, key-page, key-page-fleeting` + сниппет `dashboard.css`).
 
 Принципы создания атомных заметок:
 
@@ -108,38 +110,48 @@ tags: [system, guide, hotkeys, workflows]
 
 ### Формат Permanent Note
 
+Актуальный шаблон: [[SYSTEM/Templates/Permanent|Permanent.md]]. При создании через QuickAdd заголовок H1 совпадает с **именем файла** (Templater: `tp.file.title`).
+
 ```
 ---
+created: <дата/время через Templater>
 type: permanent
+tags: []
 status: seed | growing | mature
-created: YYYY-MM-DD
 ---
 
-# Заголовок: Суть идеи
+# <как имя файла>
 
-## Идея
-[Основная мысль в 1-2 предложениях]
+## 💡 Идея
+…
 
-## Развитие
-[Как идея расширяется, примеры, следствия]
+## 🧠 Развёрнуто
+…
 
-## Связи
-- **Похожие**: [[Link]], [[Link]]
-- **Противоположные**: [[Link]], [[Link]]
-- **Предшествующие**: [[Link]], [[Link]]
-- **Следующие**: [[Link]], [[Link]]
+## 🔗 Связи
+- **Из чего следует:** [[…]]
+- **Что из этого следует:** [[…]]
+- **Похоже на:** [[…]]
+- **Противоречит:** [[…]]
 
-## Источники
-- [[Literature Note Name]]
+## 🎴 Карточки
+…
+
+## 📚 Источники
+- [[…]]
 ```
 
-### Статусы заметок
+### Статусы заметок (`status` в frontmatter)
 
-- **seed** — новая идея, едва начатая
+Используй одно значение (не список через `|`):
+
+- **seed** — новая идея, едва начатая (старт по умолчанию в шаблоне)
 - **growing** — развивается, добавляются связи
 - **mature** — полная, установлены связи с соседними идеями
 
-## 📚 Literature Notes
+Зачем: фильтры в поиске/Dataview (`status:seed`), обзоры и приоритет доработки без отдельной базы задач.
+
+## [SOURCES] Literature Notes
 
 Заметки из книг, статей, видео.
 
@@ -171,11 +183,11 @@ rating: 1-5
 [Твои мысли об этом]
 
 ## Permanent Notes
-Заметки, извлечённые в ZETA:
+Заметки, извлечённые в ZETTA:
 - [[Permanent Note 1]]
 ```
 
-## 🗺️ MOCs (Maps of Content)
+## [MAPS] MOCs (Maps of Content)
 
 Карты содержания — индексы для навигации.
 
@@ -211,7 +223,7 @@ type: moc
 - [[MOC Name]]
 ```
 
-## 🎓 Spaced Repetition (Flashcards)
+## [CARDS] Spaced Repetition (Flashcards)
 
 Для запоминания важного материала.
 
@@ -235,14 +247,14 @@ A:: Ответ
 2. Плагин Spaced Repetition покажет в нужное время
 3. Повторяй по алгоритму Лейтнера
 
-## ⚙️ Полезные настройки
+## [SETTINGS] Полезные настройки
 
 ### Dataview запросы на Dashboard
 
 Показать недавние заметки:
 ```dataview
 LIST
-FROM "ZETA"
+FROM "ZETTA"
 WHERE type = "permanent"
 SORT created DESC
 LIMIT 5
@@ -269,7 +281,7 @@ GROUP BY status
 - Auto-link text fragments = ✓
 - Ignore accents in search = ✓
 
-## 📖 Источники и ссылки
+## [LINKS] Источники и ссылки
 
 ### Документация плагинов
 - [Templater](https://silentvoid13.github.io/Templater/)
@@ -288,7 +300,7 @@ GROUP BY status
 - [Obsidian Help](https://help.obsidian.md/)
 - Плагины: Community Plugins в Settings
 
-## 🐛 Troubleshooting
+## [DEBUG] Troubleshooting
 
 ### Dashboard показывается по-разному
 **Проблема**: Разное отображение при открытии вручную vs при запуске
@@ -298,19 +310,27 @@ GROUP BY status
 **Проблема**: "Button ID not found"
 **Решение**: Определения кнопок должны быть в начале файла, обёрнуты в `<div style="display:none">`
 
+### Кнопки QuickAdd на Home ничего не делают
+**Проблема**: В `QuickAdd` у choice выключена опция вынести в командную палитру (молния в UI), в `data.json` это поле **`"command": false`** — тогда команда `quickadd:choice:<uuid>` не регистрируется.
+**Решение**: Для **New Permanent**, **New Literature**, **New Fleeting** выставь **`"command": true`** (или включи молнию в настройках QuickAdd для каждого choice). Перезапусти Obsidian или перезагрузи плагины (Ctrl+F5).
+
+### Кнопка Meta Bind открывает пустую новую заметку
+**Проблема**: В действии `open` указана вики-ссылка на несуществующий файл (например имя совпадает с папкой, или в ссылке эмодзи/текст заголовка вместо **имени файла**).
+**Решение**: Ссылайся на реальный путь к `.md`: например `[[ZETTA/FLEETING/Fleeting hub]]`, `[[HUB/MOCs/Главный MOC|Главный MOC]]`. Для папки без заметки с таким именем Obsidian часто создаёт новый пустой файл.
+
 ### Папки отображаются в алфавитном порядке
 **Проблема**: Нет нужной сортировки
-**Решение**: Custom Sort должен использовать `.sortspec` файл в корне
+**Решение**: Настрой **Custom Sort** под себя: группа закладок (как у тебя с названием `sortspec`) или файл `.sortspec` в корне — не смешивай два источника правил, если порядок начинает «прыгать».
 
 ### Заметки не индексируются в Dataview
 **Проблема**: Dataview не видит заметки
 **Решение**: Проверь frontmatter синтаксис, перезагрузи плагин (Ctrl+F5)
 
-## 💡 Советы для продуктивности
+## [TIPS] Советы для продуктивности
 
-1. **Inbox Zero подход**
-   - Каждый день перерабатывай Fleeting → Permanent/Literature
-   - Inbox должен быть пустым к концу дня
+1. **FLEETING Zero**
+   - Каждый день перерабатывай заметки из `ZETTA/FLEETING` → Permanent/Literature
+   - К концу дня старайся не копить необработанные fleeting
 
 2. **Batch создание заметок**
    - Собирай идеи весь день через QuickAdd
