@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-<<<<<<< Updated upstream
         "id": "4509724f8bf84da7",
         "type": "tabs",
         "children": [
           {
             "id": "e7a7b303c61786dc",
-=======
-        "id": "6eded7512fb57612",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "f02106655edeb78c",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 HUB/🏠 Home.md",
+                "file": "HUB/🏠 Home.md",
                 "mode": "preview",
                 "source": false
               },
@@ -31,18 +24,17 @@
             }
           },
           {
-            "id": "6237ec6bf85fa557",
->>>>>>> Stashed changes
+            "id": "d0306a85746bd3aa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 HUB/🏠 Home.md",
+                "file": "SYSTEM/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "🏠 Home"
+              "title": "README"
             }
           }
         ],
@@ -78,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "HUB",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -218,53 +210,41 @@
       "omnisearch:Omnisearch": false,
       "obsidian-spaced-repetition:Review flashcards": false,
       "templater-obsidian:Templater": false,
+      "custom-sort:Toggle custom sorting": false,
       "periodic-notes:Open today": false
     }
   },
-<<<<<<< Updated upstream
-  "active": "f7c79af46b9e12c7",
+  "active": "d0306a85746bd3aa",
   "lastOpenFiles": [
-    "1 HUB/🏠 Home.md",
-    "1 HUB/Inbox.md",
+    "SYSTEM/Guide.md",
+    "SYSTEM/Setup.md",
     "HUB/🏠 Home.md",
-    "README.md",
+    "HUB/Inbox/Inbox.md",
+    "HUB/MOCs/Главный MOC.md",
+    "HUB/MOCs/MOC Python.md",
+    "HUB/Inbox/InboxNoteTestOne.md",
+    "HUB/MOCs",
+    "HUB/Inbox",
     "HUB",
-    "SYSTEM/Templates/Monthly.md",
-    "SYSTEM/Templates/Literature.md",
-    "SYSTEM/Templates/Daily.md",
-    "SYSTEM/Templates",
-    "SYSTEM",
     "1 HUB/MOCs/Главный MOC.md",
-    "🗺️ Главный MOC.md",
-    "5 SYSTEM/Guide.md",
-    "5 SYSTEM/Setup.md",
-    "1 HUB/🏠 Home.md.tmp.27544.1777714903504",
-    "5 SYSTEM/Templates/Weekly.md",
-    "5 SYSTEM/Templates/Permanent.md",
-    "5 SYSTEM/Templates/Monthly.md",
-    "5 SYSTEM/Templates/MOC.md",
-    "5 SYSTEM/Templates/Literature.md",
-    "5 SYSTEM/Templates/Fleeting.md",
-    "5 SYSTEM/Templates/Flashcard.md",
-    "5 SYSTEM/Templates/Daily.md",
-    "5 SYSTEM/Templates",
-    "5 SYSTEM/SETUP.md",
-    "5 SYSTEM/Excalidraw",
-    "5 SYSTEM/Attachments",
-    "5 SYSTEM",
-    "4 DAILY/Daily/2026-05-02.md",
-    "4 DAILY/Weekly",
-    "4 DAILY/Monthly",
     "1 HUB/MOCs/MOC Python.md",
     "1 HUB/Inbox/InboxNoteTestOne.md",
-    "HUB/MOCs/MOC Python.md",
-    "HUB/MOCs/Главный MOC.md",
-    "🏠 Home.md"
-=======
-  "active": "f5927d5cc4c256a4",
-  "lastOpenFiles": [
+    "1 HUB/🏠 Home.md",
+    "1 HUB/MOCs",
     "1 HUB/Inbox.md",
-    "1 HUB/🏠 Home.md"
->>>>>>> Stashed changes
+    "1 HUB/Inbox",
+    "1 HUB",
+    "SYSTEM/Templates/Weekly.md",
+    "SYSTEM/Templates/Permanent.md",
+    "SYSTEM/Templates/MOC.md",
+    "SYSTEM/Templates/Fleeting.md",
+    "SYSTEM/Templates/Flashcard.md",
+    "DAILY/Daily/2026-05-02.md",
+    "DAILY/Weekly",
+    "DAILY/Monthly",
+    "DAILY/Daily",
+    "DAILY",
+    "5 SYSTEM/Templates/Daily.md",
+    "SYSTEM/Templates/Daily.md"
   ]
 }

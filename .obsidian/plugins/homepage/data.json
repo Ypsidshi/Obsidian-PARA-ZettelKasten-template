@@ -2,7 +2,7 @@
   "version": 4,
   "homepages": {
     "Main Homepage": {
-      "value": "1 HUB/🏠 Home",
+      "value": "HUB/🏠 Home",
       "kind": "File",
       "openOnStartup": true,
       "openMode": "Replace all open notes",
