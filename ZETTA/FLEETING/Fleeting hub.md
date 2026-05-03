@@ -24,6 +24,7 @@ SORT file.ctime DESC
 
 - Кнопка **Fleeting** на [[HUB/Home|Домой]]
 - QuickAdd: **New Fleeting**
+- Хаб источников: [[ZETTA/Literature/Literature hub|Literature hub]]
 
 ```meta-bind-button
 label: Домой

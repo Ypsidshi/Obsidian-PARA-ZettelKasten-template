@@ -1,0 +1,27 @@
+# Личные заметки и журнал (в публичном репо не трекаются; hub + .gitkeep остаются в индексе).
+/ZETTA/
+/DAILY/
+/PARA/
+
+# Корзина Obsidian
+.trash/
+
+# --- Локальное / машинозависимое в .obsidian ---
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.obsidian/starred.json
+.obsidian/bookmarks.json
+
+# Кэш
+.obsidian/cache
+
+# Раскомментируй, если не хочешь публиковать состояние плагинов (пути, id):
+# .obsidian/plugins/**/data.json
+
+# ОС и редакторы
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
