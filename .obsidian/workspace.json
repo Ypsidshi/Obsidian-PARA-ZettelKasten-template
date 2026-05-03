@@ -4,11 +4,35 @@
     "type": "split",
     "children": [
       {
+<<<<<<< Updated upstream
         "id": "4509724f8bf84da7",
         "type": "tabs",
         "children": [
           {
             "id": "e7a7b303c61786dc",
+=======
+        "id": "6eded7512fb57612",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f02106655edeb78c",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 HUB/🏠 Home.md",
+                "mode": "preview",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "🏠 Home"
+            }
+          },
+          {
+            "id": "6237ec6bf85fa557",
+>>>>>>> Stashed changes
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -21,21 +45,22 @@
               "title": "🏠 Home"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "d7555179b9e8d91f",
+    "id": "401840ed78292f3b",
     "type": "split",
     "children": [
       {
-        "id": "1a540300cb024224",
+        "id": "8f13490d91f105d4",
         "type": "tabs",
         "children": [
           {
-            "id": "4b0eed0869c64b83",
+            "id": "f5927d5cc4c256a4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +73,7 @@
             }
           },
           {
-            "id": "e958ba8b2966e246",
+            "id": "0bf6eaa54c5c789b",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,13 +90,13 @@
             }
           },
           {
-            "id": "878cbee5e8f3a456",
+            "id": "bc7434bac8f5029a",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "Закладки"
+              "title": "Bookmarks"
             }
           }
         ]
@@ -81,20 +106,19 @@
     "width": 300
   },
   "right": {
-    "id": "ea4577a9f1ec3264",
+    "id": "13a851696e5d135f",
     "type": "split",
     "children": [
       {
-        "id": "2b07ff14ad8ac2fa",
+        "id": "d808cae837b6ce97",
         "type": "tabs",
         "children": [
           {
-            "id": "960f223e35c27944",
+            "id": "b8de1f2b2cddcafd",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "HUB/🏠 Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +128,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 🏠 Home"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "f46255c6fcba98c0",
+            "id": "4946b9e3f7d0b17a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SETUP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из SETUP"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "c36ff1f66c2d6e8d",
+            "id": "a43d4787b3a2ae7c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,11 +156,11 @@
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
-              "title": "Теги"
+              "title": "Tags"
             }
           },
           {
-            "id": "86cf4ba08b1c2e65",
+            "id": "2d3bc51b3fde37a4",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -147,26 +170,25 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "Все свойства"
+              "title": "All properties"
             }
           },
           {
-            "id": "1a721ecd0ad075c7",
+            "id": "7316b68711695d47",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "SETUP.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура SETUP"
+              "title": "Outline"
             }
           },
           {
-            "id": "f7c79af46b9e12c7",
+            "id": "818ead2488e3c901",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -174,43 +196,32 @@
               "icon": "SpacedRepIcon",
               "title": "Notes Review Queue"
             }
-          },
-          {
-            "id": "c8e38923a9cadf33",
-            "type": "leaf",
-            "state": {
-              "type": "file-properties",
-              "state": {
-                "file": "🏠 Home.md"
-              },
-              "icon": "lucide-info",
-              "title": "File properties for 🏠 Home"
-            }
           }
         ],
         "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "daily-notes:Open today's daily note": false,
-      "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "homepage:Open homepage": false,
       "omnisearch:Omnisearch": false,
       "obsidian-spaced-repetition:Review flashcards": false,
+      "templater-obsidian:Templater": false,
       "periodic-notes:Open today": false
     }
   },
+<<<<<<< Updated upstream
   "active": "f7c79af46b9e12c7",
   "lastOpenFiles": [
     "1 HUB/🏠 Home.md",
@@ -249,5 +260,11 @@
     "HUB/MOCs/MOC Python.md",
     "HUB/MOCs/Главный MOC.md",
     "🏠 Home.md"
+=======
+  "active": "f5927d5cc4c256a4",
+  "lastOpenFiles": [
+    "1 HUB/Inbox.md",
+    "1 HUB/🏠 Home.md"
+>>>>>>> Stashed changes
   ]
 }
