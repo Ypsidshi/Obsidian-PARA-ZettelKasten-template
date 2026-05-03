@@ -6,7 +6,8 @@
    • Daily / Weekly / Monthly: в H2 — шорткоды Icon Folder (`:LiИмя:`); Journals ```calendar-nav```; Weekly/Monthly — callout [!periodic-nav]
    • Periodic hub:      [dashboard, periodic-hub]
    • Guide / Setup / README: [accent-nav-h2] — синие H2 без полного layout dashboard
-   • Хабы: `BUTTON[hub_nav_home]` + сетка без max-width 1100; H2 — full bleed (--db-h2-bleed-left/right)
+   • Хабы: `BUTTON[hub_nav_home]` + сетка без max-width 1100
+   • H2 на dashboard: по центру, без border-bottom; Iconize + ::before по центру
    Акцент заголовков / H2 / Dataview: #2459b8 (Iconize в H2 + mask ::before, где нет :Li)
    ========================================================== */
 .dashboard,
@@ -46,6 +47,7 @@
 .markdown-source-view.mod-cm6.dashboard .cm-header-2 {
   color: var(--db-accent) !important;
   -webkit-text-fill-color: var(--db-accent) !important;
+  text-align: center !important;
 }
 
 /* SYSTEM: Guide / Setup / README — синие H2 без layout .dashboard */
@@ -84,8 +86,6 @@
 /* Центрируем содержимое */
 .markdown-preview-view.dashboard {
   padding: 32px 48px !important;
-  --db-h2-bleed-left: 48px;
-  --db-h2-bleed-right: 48px;
 }
 
 .markdown-preview-view.dashboard .markdown-preview-sizer {
@@ -99,8 +99,6 @@
 .markdown-preview-view.dashboard.key-page-moc {
   padding-left: max(12px, env(safe-area-inset-left, 0px)) !important;
   padding-right: max(12px, env(safe-area-inset-right, 0px)) !important;
-  --db-h2-bleed-left: max(12px, env(safe-area-inset-left, 0px));
-  --db-h2-bleed-right: max(12px, env(safe-area-inset-right, 0px));
 }
 .markdown-preview-view.dashboard.periodic-hub .markdown-preview-sizer,
 .markdown-preview-view.dashboard.key-page-fleeting .markdown-preview-sizer,
@@ -109,17 +107,6 @@
   width: 100%;
   margin-left: 0 !important;
   margin-right: 0 !important;
-}
-
-/* H2 — на всю ширину панели заметки (линия border-bottom от края до края колонки) */
-.markdown-preview-view.dashboard h2 {
-  margin-left: calc(-1 * var(--db-h2-bleed-left, 48px));
-  margin-right: calc(-1 * var(--db-h2-bleed-right, 48px));
-  padding-left: var(--db-h2-bleed-left, 48px);
-  padding-right: var(--db-h2-bleed-right, 48px);
-  box-sizing: border-box;
-  width: auto;
-  max-width: none;
 }
 
 /* ---------- Home: заголовок Second Brain + иконка мозга ---------- */
@@ -264,17 +251,20 @@
   max-width: 600px;
 }
 
-/* H2 — заголовки секций с монохромными иконками */
+/* H2 — по центру страницы, без нижней полосы (старый border-bottom) */
 .dashboard h2 {
   font-size: 1.3em;
   font-weight: 600;
   margin-top: 32px;
   margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--background-modifier-border);
+  padding-bottom: 0;
+  border-bottom: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
 /* Базовый стиль иконки перед H2 */
