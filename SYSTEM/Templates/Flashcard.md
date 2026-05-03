@@ -1,17 +1,19 @@
 ---
-created: 2026-05-02 12:40
+created: <% tp.date.now("YYYY-MM-DD HH:mm") %>
 type: flashcard
 tags: [flashcards]
 deck: 
 ---
 
-# Weekly
+# <% tp.file.title %>
 
-#flashcards/null
+#flashcards/deck
+
+## :LiLayers: Карточка
 
 Q:: 
 
 A:: 
 
-## 🔗 Связано с
+## :LiLink2: Связано с
 - 

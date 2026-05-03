@@ -1,35 +1,72 @@
+<%*
+const ts = tp.date.now("YYYY-MM-DD HH:mm");
+const month = tp.date.now("YYYY-MM");
+const title = tp.file.title;
+let prevW = "", nextW = "", weekStart = "", weekEnd = "";
+try {
+  const moment = window.moment;
+  if (moment && /^\d{4}-W\d{2}$/i.test(title)) {
+    const base = moment(title, "GGGG-[W]WW", true);
+    if (base.isValid()) {
+      prevW = base.clone().subtract(1, "week").format("GGGG-[W]WW");
+      nextW = base.clone().add(1, "week").format("GGGG-[W]WW");
+      weekStart = base.clone().startOf("isoWeek").format("YYYY-MM-DD");
+      weekEnd = base.clone().endOf("isoWeek").format("YYYY-MM-DD");
+    }
+  }
+} catch (e) {}
+-%>
 ---
-created: 2026-05-02 11:46
+created: <% ts %>
 type: weekly
 tags: [periodic/weekly]
-month: "[[2026-05]]"
+month: "[[DAILY/Monthly/<% month %>]]"
+cssclasses:
+  - dashboard
+  - periodic-weekly
+obsidianUIMode: preview
 ---
 
-# [WEEK] Неделя 2026-W18
+# Неделя <% title %>
 
-← [[2026-W17|Прошлая неделя]] | [[2026-W19|Следующая неделя]] →
+<%* if (prevW && nextW) { -%>
+> [!periodic-nav]
+> [[DAILY/Weekly/<% prevW %>|← Прошлая неделя]] · **<% title %>** · [[DAILY/Weekly/<% nextW %>|Следующая неделя →]]
+<%* } else { -%>
+*Ссылки «прошлая / следующая неделя» появятся, когда имя файла в формате `YYYY-Www`.*
+<%* } -%>
 
-## [GOALS] Цели недели
+## :LiTarget: Цели недели
 
 
-## [NOTES] Заметки за неделю
+## :LiFiles: Заметки за неделю
+
+*Permanent и literature за интервал ISO-недели (даты подставляются при создании заметки из шаблона).*
+
+<%* if (weekStart && weekEnd) { -%>
 ```dataview
 LIST
 FROM ""
 WHERE (type = "permanent" OR type = "literature")
+  AND file.cday >= date("<% weekStart %>")
+  AND file.cday <= date("<% weekEnd %>")
   AND !contains(file.path, "Templates")
-WHERE file.cday >= date(this.file.name + "-1", "YYYY-'W'ww-c")
-  AND file.cday <= date(this.file.name + "-7", "YYYY-'W'ww-c")
-SORT file.ctime ASC
+SORT file.cday ASC
 ```
+<%* } else { -%>
+*Не удалось вычислить границы недели по имени файла — проверь формат `YYYY-Www` или открой заметку заново из Periodic Notes.*
+<%* } -%>
 
-## [REFLECTION] Рефлексия
+## :LiMessagesSquare: Рефлексия
 
 **Что получилось:**
+
 - 
 
 **Что не получилось:**
+
 - 
 
-**Что вынести:**
+**Что вынести дальше:**
+
 - 

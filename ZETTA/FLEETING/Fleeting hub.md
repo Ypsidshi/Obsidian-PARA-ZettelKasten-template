@@ -9,9 +9,9 @@ obsidianUIMode: preview
 
 > Входящий слой ZETTA: быстрые черновики до разбора в permanent или literature.
 >
-> Куда дальше: [[HUB/🏠 Home|Домой]] — [[HUB/MOCs/Главный MOC|Главный MOC]]
+> Куда дальше: [[HUB/Home|Домой]] — [[HUB/Periodic hub|Цикл]] — [[HUB/MOCs/Главный MOC|Главный MOC]]
 
-## Очередь
+## :LiList: Очередь
 
 ```dataview
 LIST
@@ -20,7 +20,7 @@ WHERE file.name != this.file.name
 SORT file.ctime DESC
 ```
 
-## Как создавать
+## :LiSparkles: Как создавать
 
-- Кнопка **Fleeting** на [[HUB/🏠 Home|Домой]]
+- Кнопка **Fleeting** на [[HUB/Home|Домой]]
 - QuickAdd: **New Fleeting**

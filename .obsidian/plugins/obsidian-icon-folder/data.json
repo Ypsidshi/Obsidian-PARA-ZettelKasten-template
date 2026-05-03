@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiWorkflow",
+      "LiGlobe",
       "LiMap",
       "LiAtom",
-      "LiCalendar",
-      "LiComponent",
-      "📚"
+      "LiCalendar"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -33,5 +33,10 @@
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
-  }
+  },
+  "HUB": "LiGlobe",
+  "PARA": "LiComponent",
+  "ZETTA": "LiAtom",
+  "SYSTEM": "LiWorkflow",
+  "DAILY": "LiCalendar"
 }

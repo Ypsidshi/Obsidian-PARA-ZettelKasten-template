@@ -10,15 +10,15 @@ obsidianUIMode: preview
 
 > Точка входа в темы и карты содержания.
 >
-> Куда дальше: [[HUB/🏠 Home|Домой]] — [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]]
+> Куда дальше: [[HUB/Home|Домой]] — [[HUB/Periodic hub|Цикл]] — [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]]
 
-## Тематические карты
+## :LiMap: Тематические карты
 
 *По мере роста базы добавляй ссылки на MOC по крупным темам.*
 
 - 
 
-## Все MOC
+## :LiLayoutGrid: Все MOC
 
 ```dataview
 LIST

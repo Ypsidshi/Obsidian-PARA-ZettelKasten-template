@@ -1,6 +1,7 @@
 ---
 type: guide
 tags: [system, guide, hotkeys, workflows]
+cssclasses: [accent-nav-h2]
 ---
 
 # Guide: Как работать с хранилищем
@@ -29,7 +30,7 @@ tags: [system, guide, hotkeys, workflows]
 
 1. **Утром** (при открытии Obsidian)
    - Открывается Dashboard автоматически
-   - Нажми "Daily Note" или используй `Ctrl+Shift+D`
+   - Нажми **Daily** на Home, открой хаб [[HUB/Periodic hub|Цикл]] или используй `Ctrl+Shift+D`
    - Увидишь: список FLEETING, план на день, заметки из вчера
 
 2. **В течение дня**
@@ -122,22 +123,22 @@ status: seed | growing | mature
 
 # <как имя файла>
 
-## 💡 Идея
+## :LiLightbulb: Идея
 …
 
-## 🧠 Развёрнуто
+## :LiBrain: Развёрнуто
 …
 
-## 🔗 Связи
+## :LiLink: Связи
 - **Из чего следует:** [[…]]
 - **Что из этого следует:** [[…]]
 - **Похоже на:** [[…]]
 - **Противоречит:** [[…]]
 
-## 🎴 Карточки
+## :LiLayers: Карточки
 …
 
-## 📚 Источники
+## :LiLibrary: Источники
 - [[…]]
 ```
 
@@ -172,11 +173,11 @@ rating: 1-5
 ## Основная информация
 [Источник, ссылка, год выпуска]
 
-## Ключевые идеи
+## :LiKey: Ключевые идеи
 - Идея 1
 - Идея 2
 
-## Цитаты
+## :LiQuote: Цитаты
 > "Цитата из источника"
 
 ## Размышления
@@ -278,8 +279,8 @@ GROUP BY status
 ### Автолинкование
 
 Включи в Settings → Editor:
-- Auto-link text fragments = ✓
-- Ignore accents in search = ✓
+- Auto-link text fragments = +
+- Ignore accents in search = +
 
 ## [LINKS] Источники и ссылки
 

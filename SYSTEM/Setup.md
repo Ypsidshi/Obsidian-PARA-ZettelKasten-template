@@ -1,6 +1,7 @@
 ---
 type: guide
 tags: [system, setup, installation]
+cssclasses: [accent-nav-h2]
 ---
 
 # Setup: Установка хранилища
@@ -65,9 +66,9 @@ tags: [system, setup, installation]
 ## 6. Настройка Homepage
 
 В Settings → Homepage:
-- Homepage file = `HUB/🏠 Home`
-- Open on startup = ✓
-- Pin the homepage tab = ✓
+- Homepage file = `HUB/Home`
+- Open on startup = +
+- Pin the homepage tab = +
 
 ## 7. Настройка Custom Sort
 
@@ -97,6 +98,10 @@ SYSTEM
 - `Daily.md` — ежедневная заметка
 - `Weekly.md` — еженедельный обзор
 - `Monthly.md` — ежемесячный обзор
+
+Шаблоны Daily / Weekly / Monthly задают `cssclasses` для дашборда (`dashboard` + `periodic-daily` / `periodic-weekly` / `periodic-monthly`) и `obsidianUIMode: preview`; оформление и иконки секций — в `.obsidian/snippets/dashboard.css`. Сводки — **таблицы Dataview**.
+
+Хаб **[[HUB/Periodic hub|Periodic hub]]** (`cssclasses: dashboard, periodic-hub`): кнопки Meta Bind для открытия/создания текущих daily, weekly, monthly (команды Periodic Notes), оформление как на Home.
 - `Permanent.md` — атомная заметка (Zettelkasten)
 - `Literature.md` — заметка из источника
 - `MOC.md` — карта содержания
@@ -106,8 +111,8 @@ SYSTEM
 ## 10. Настройка Dataview
 
 В Settings → Dataview:
-- Render inline expressions = ✓
-- Render inline field icons = ✓
+- Render inline expressions = +
+- Render inline field icons = +
 
 Для использования в шаблонах:
 ```dataview
@@ -120,12 +125,12 @@ LIMIT 5
 
 ## 11. Настройка Meta Bind
 
-На Dashboard (`HUB/🏠 Home.md`) добавить кнопки:
+На Dashboard (`HUB/Home.md`) добавить кнопки:
 ```
 BUTTON[id]
 ```
 
-Кнопки (см. актуальные `id` в `HUB/🏠 Home.md`):
+Кнопки (см. актуальные `id` в `HUB/Home.md`):
 - Daily Note
 - Открыть **Fleeting hub** (`[[ZETTA/FLEETING/Fleeting hub]]`, не вики на несуществующий файл)
 - New Fleeting (QuickAdd choice)
@@ -148,7 +153,7 @@ BUTTON[id]
 1. Открыть хранилище в Obsidian
 2. Перезагрузить плагины (Ctrl+F5)
 3. Создать первую ежедневную заметку (Ctrl+D или через кнопку)
-4. Проверить Dashboard на `HUB/🏠 Home.md`
+4. Проверить Dashboard на `HUB/Home.md`
 5. Убедиться, что все кнопки работают
 6. Добавить первую заметку в ZETTA через "New Permanent"
 

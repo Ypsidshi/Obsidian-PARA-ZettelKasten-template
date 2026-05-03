@@ -8,9 +8,9 @@ obsidianUIMode: preview
 
 > Обработка → Хранение → Связи → Запоминание
 
-`BUTTON[open_daily]` `BUTTON[open_fleeting]` `BUTTON[new_fleeting]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
+`BUTTON[open_daily]` `BUTTON[open_periodic_hub]` `BUTTON[open_fleeting]` `BUTTON[new_fleeting]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
 
-## Fleeting
+## :LiInbox: Fleeting
 ```dataview
 LIST
 FROM "ZETTA/FLEETING"
@@ -19,7 +19,7 @@ SORT file.ctime DESC
 LIMIT 10
 ```
 
-## Сейчас читаю
+## :LiBookOpen: Сейчас читаю
 ```dataview
 TABLE without id
   file.link as "Заметка",
@@ -30,7 +30,7 @@ WHERE type = "literature" AND status = "reading"
 SORT file.mtime DESC
 ```
 
-## Последние Permanent
+## :LiFileText: Последние Permanent
 ```dataview
 LIST
 FROM "ZETTA/Permanent"
@@ -40,7 +40,7 @@ SORT file.ctime DESC
 LIMIT 7
 ```
 
-## Карты тем
+## :LiMap: Карты тем
 ```dataview
 LIST
 FROM "HUB/MOCs"
@@ -48,7 +48,7 @@ WHERE type = "moc"
 SORT file.name ASC
 ```
 
-## Статистика
+## :LiBarChart2: Статистика
 ```dataview
 TABLE WITHOUT ID
   type as "Тип",
@@ -70,6 +70,18 @@ tooltip: Открыть сегодняшнюю Daily-заметку
 actions:
   - type: command
     command: periodic-notes:open-daily-note
+```
+
+```meta-bind-button
+label: Цикл
+icon: lucide-layout-dashboard
+hidden: true
+id: open_periodic_hub
+style: default
+tooltip: Daily, Weekly, Monthly — хаб Periodic Notes
+actions:
+  - type: open
+    link: "[[HUB/Periodic hub]]"
 ```
 
 ```meta-bind-button

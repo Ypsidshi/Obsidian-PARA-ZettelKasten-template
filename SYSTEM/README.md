@@ -1,3 +1,7 @@
+---
+cssclasses: [accent-nav-h2]
+---
+
 # Second Brain
 
 Obsidian-шаблон: Zettelkasten + PARA, без задач (они в Microsoft To Do).
@@ -5,7 +9,7 @@ Obsidian-шаблон: Zettelkasten + PARA, без задач (они в Microso
 ## Структура
 
 ```
-HUB/      — Dashboard (🏠 Home), MOCs
+HUB/      — Dashboard (⌂ Home), [[HUB/Periodic hub|Periodic hub]], MOCs
 PARA/     — Projects · Areas · Resources · Archive
 ZETTA/    — FLEETING (черновики) · Permanent · Literature · Flashcards
 DAILY/    — Daily · Weekly · Monthly
@@ -20,6 +24,7 @@ CSS-сниппет: `.obsidian/snippets/dashboard.css`.
 
 - **Home:** `cssclasses: [home, dashboard]` — заголовок Second Brain, панель кнопок, секции.
 - **Ключевые hub-страницы** (тот же синий акцент, карточки Dataview, без эмодзи): `cssclasses: [dashboard, key-page, key-page-fleeting]` для [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]] и `[dashboard, key-page, key-page-moc]` для [[HUB/MOCs/Главный MOC|Главный MOC]].
+- **Документация SYSTEM:** `cssclasses: [accent-nav-h2]` — только синие H2 в духе Home, без скрытия frontmatter и без центрирования как у dashboard.
 
 
 Не используется:

@@ -9,7 +9,7 @@ tags: [system, plugins, configuration]
 
 ---
 
-## 🔧 Ключевые плагины
+## ⊨ Ключевые плагины
 
 ### 1. **Templater** (v1.16.0+)
 Создание заметок по шаблонам с динамическим содержимым.
@@ -31,17 +31,17 @@ SYSTEM/Templates
 **Иконки шаблонов:**
 ```json
 "templates_pairs": [
-  ["🏠", "HUB"],
-  ["📝", "DAILY"],
-  ["🔗", "ZETTA"],
-  ["📚", "ZETTA/Literature"]
+  ["⌂", "HUB"],
+  ["¶", "DAILY"],
+  ["↗", "ZETTA"],
+  ["≡", "ZETTA/Literature"]
 ]
 ```
 
 **Settings:**
-- ✅ Trigger on file creation
-- ✅ Enable folder templates
-- ✅ Enable system commands (если нужны script commands)
+- + Trigger on file creation
+- + Enable folder templates
+- + Enable system commands (если нужны script commands)
 
 ---
 
@@ -147,9 +147,9 @@ SYSTEM/Templates
 - Open QuickAdd menu: `Ctrl+Shift+A`
 
 **Settings:**
-- ✅ Input prompt: Single-line
-- ✅ Use selection as capture value
-- ✅ Announce updates: Major
+- + Input prompt: Single-line
+- + Use selection as capture value
+- + Announce updates: Major
 
 ---
 
@@ -159,7 +159,7 @@ SYSTEM/Templates
 **Конфиг:**
 ```json
 {
-  "homepageFilePath": "HUB/🏠 Home",
+  "homepageFilePath": "HUB/Home",
   "openOnStartup": true,
   "pinHomepageTab": true,
   "hotkeyScope": "global"
@@ -176,13 +176,13 @@ SYSTEM/Templates
 
 Для действия `open` с типом `link` указывай **существующую** заметку по пути (например `[[ZETTA/FLEETING/Fleeting hub]]`), иначе Obsidian может создать пустой файл с «похожим» именем.
 
-**Dashboard buttons в HUB/🏠 Home.md:**
+**Dashboard buttons в HUB/Home.md:**
 
 Кнопки должны быть определены в начале файла:
 ```
-BUTTON[id=daily-btn, label="📅 Daily Note", action="periodic-notes:open-daily"]
-BUTTON[id=quick-btn, label="⚡ QuickAdd", action="quickadd:open-quick"]
-BUTTON[id=perm-btn, label="🔗 New Permanent", action="quickadd:choice:New Permanent"]
+BUTTON[id=daily-btn, label="► Daily Note", action="periodic-notes:open-daily"]
+BUTTON[id=quick-btn, label="∗ QuickAdd", action="quickadd:open-quick"]
+BUTTON[id=perm-btn, label="↗ New Permanent", action="quickadd:choice:New Permanent"]
 ```
 
 **Использование в тексте:**
@@ -192,8 +192,8 @@ BUTTON[quick-btn]
 ```
 
 **Settings:**
-- ✅ Preview mode rendering
-- ✅ Highlight buttons on hover
+- + Preview mode rendering
+- + Highlight buttons on hover
 
 ---
 
@@ -227,9 +227,9 @@ GROUP BY status
 ```
 
 **Settings:**
-- ✅ Render inline expressions
-- ✅ Render inline field icons
-- ✅ Pretty rendering
+- + Render inline expressions
+- + Render inline field icons
+- + Pretty rendering
 
 ---
 
@@ -247,7 +247,7 @@ SYSTEM
 
 **Settings:**
 - Sort specs file: `.sortspec` (автоматически)
-- Enable custom sorting: ✓
+- Enable custom sorting: +
 
 ---
 
@@ -258,9 +258,9 @@ SYSTEM
 - Open search: `Ctrl+K`
 
 **Settings:**
-- ✅ Show in search modal
-- ✅ Exclude extensions: `.obsidian`
-- ✅ Render markdown in search results
+- + Show in search modal
+- + Exclude extensions: `.obsidian`
+- + Render markdown in search results
 
 **Exclude folders:**
 ```
@@ -270,7 +270,7 @@ SYSTEM
 
 ---
 
-## 📚 Вспомогательные плагины
+## ≡ Вспомогательные плагины
 
 ### 9. **Spaced Repetition** (v1.11.0+)
 Интеграция flashcard-ов для обучения.
@@ -281,9 +281,9 @@ ZETTA/Flashcards
 ```
 
 **Settings:**
-- ✅ Show review intro
-- ✅ Show correct/incorrect options
-- ✅ Use scheduling (Leitner System)
+- + Show review intro
+- + Show correct/incorrect options
+- + Use scheduling (Leitner System)
 
 ---
 
@@ -330,7 +330,7 @@ ZETTA/Flashcards
 
 ---
 
-## 🎨 Стилизация и UI
+## ◐ Стилизация и UI
 
 ### 13. **Obsidian Style Settings** (v0.4.12+)
 Управление CSS переменными и темами.
@@ -360,7 +360,7 @@ ZETTA/Flashcards
 
 ---
 
-## 📋 Чек-лист настройки
+## ⊟ Чек-лист настройки
 
 ### Шаг 1: Templater
 - [ ] Папка шаблонов: `SYSTEM/Templates`
@@ -379,7 +379,7 @@ ZETTA/Flashcards
 - [ ] File name formats настроены
 
 ### Шаг 4: Homepage
-- [ ] Путь: `HUB/🏠 Home`
+- [ ] Путь: `HUB/Home`
 - [ ] Open on startup включен
 - [ ] Pin tab включен
 
@@ -403,7 +403,7 @@ ZETTA/Flashcards
 
 ---
 
-## 🐛 Troubleshooting
+## ⨉ Troubleshooting
 
 **Шаблоны не применяются при создании файла**
 - Проверь: Templater folder = `SYSTEM/Templates`

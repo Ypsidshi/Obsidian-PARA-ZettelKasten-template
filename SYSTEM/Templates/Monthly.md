@@ -10,36 +10,47 @@ const monthNum = tp.date.now("M");
 created: <% ts %>
 type: monthly
 tags: [periodic/monthly]
-prev-month: "[[<% prevMonth %>]]"
+prev-month: "[[DAILY/Monthly/<% prevMonth %>]]"
+cssclasses:
+  - dashboard
+  - periodic-monthly
+obsidianUIMode: preview
 ---
 
-# [MONTH] <% monthName %>
+# <% monthName %>
 
-← [[<% prevMonth %>|Прошлый месяц]] | [[<% nextMonth %>|Следующий месяц]] →
+> [!periodic-nav]
+> [[DAILY/Monthly/<% prevMonth %>|← Прошлый месяц]] · **<% tp.date.now("YYYY-MM") %>** · [[DAILY/Monthly/<% nextMonth %>|Следующий месяц →]]
 
-## [CYCLE] Что я обещал изменить в прошлом месяце
-*(подтягивается из прошлого Monthly — перечитай и оцени)*
+## :LiListChecks: Обещания прошлого месяца
+
+*(из прошлого Monthly — блок «Что меняю в следующем месяце»)*
+
 ```dataview
 LIST without id L.text
-FROM [[<% prevMonth %>]]
+FROM [[DAILY/Monthly/<% prevMonth %>]]
 FLATTEN file.lists as L
 WHERE contains(L.section.subpath, "Что меняю")
 ```
 
-## [GOALS] Цели месяца
+## :LiTarget: Цели месяца
 
 
-## [STATS] Статистика
+## :LiBarChart2: Статистика
+
 ```dataview
-TABLE length(rows) as "Создано"
+TABLE type as "Тип", length(rows) as "Создано"
 FROM ""
 WHERE file.cday.year = <% year %>
   AND file.cday.month = <% monthNum %>
   AND !contains(file.path, "Templates")
+  AND type
 GROUP BY type
+SORT length(rows) DESC
 ```
 
-## 📝 Permanent-заметки месяца
+## :LiFileText: Permanent за месяц
+
 ```dataview
 LIST
 FROM ""
@@ -47,10 +58,11 @@ WHERE type = "permanent"
   AND file.cday.year = <% year %>
   AND file.cday.month = <% monthNum %>
   AND !contains(file.path, "Templates")
-SORT file.ctime ASC
+SORT file.cday ASC
 ```
 
-## [BOOKS] Прочитано в этом месяце
+## :LiBookOpen: Прочитано в этом месяце
+
 ```dataview
 LIST
 FROM ""
@@ -59,10 +71,14 @@ WHERE type = "literature" AND status = "done"
   AND file.mday.month = <% monthNum %>
 ```
 
-## [KEY LESSONS] Главные уроки месяца
-*3–5 пунктов. Что я понял, чего не знал месяц назад. Конкретно.*
+## :LiLightbulb: Главные уроки месяца
+
+*Три–пять конкретных пунктов: что понял за месяц.*
+
 - 
 
-## [CYCLE] Что меняю в следующем месяце
-*Конкретные изменения. Не "буду больше читать", а "ставлю напоминание читать 20 минут после завтрака".*
+## :LiSquarePen: Что меняю в следующем месяце
+
+*Конкретные изменения процесса, не общие пожелания.*
+
 - 
