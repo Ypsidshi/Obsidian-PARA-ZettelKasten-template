@@ -6,6 +6,7 @@
    • Daily / Weekly / Monthly: в H2 — шорткоды Icon Folder (`:LiИмя:`); Journals ```calendar-nav```; Weekly/Monthly — callout [!periodic-nav]
    • Periodic hub:      [dashboard, periodic-hub]
    • Guide / Setup / README: [accent-nav-h2] — синие H2 без полного layout dashboard
+   • Хабы: `BUTTON[hub_nav_home]` + сетка без max-width 1100 (см. «Хабы Periodic / Fleeting / MOC» и «Одна кнопка»)
    Акцент заголовков / H2 / Dataview: #2459b8 (Iconize в H2 + mask ::before, где нет :Li)
    ========================================================== */
 .dashboard,
@@ -88,6 +89,22 @@
 .markdown-preview-view.dashboard .markdown-preview-sizer {
   max-width: 1100px !important;
   margin: 0 auto !important;
+}
+
+/* Хабы Periodic / Fleeting / MOC: контент на всю ширину панели заметки (кнопка «Домой» edge-to-edge в колонке) */
+.markdown-preview-view.dashboard.periodic-hub,
+.markdown-preview-view.dashboard.key-page-fleeting,
+.markdown-preview-view.dashboard.key-page-moc {
+  padding-left: max(12px, env(safe-area-inset-left, 0px)) !important;
+  padding-right: max(12px, env(safe-area-inset-right, 0px)) !important;
+}
+.markdown-preview-view.dashboard.periodic-hub .markdown-preview-sizer,
+.markdown-preview-view.dashboard.key-page-fleeting .markdown-preview-sizer,
+.markdown-preview-view.dashboard.key-page-moc .markdown-preview-sizer {
+  max-width: none !important;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* ---------- Home: заголовок Second Brain + иконка мозга ---------- */
@@ -396,6 +413,39 @@
 
 .dashboard .mb-button .mb-button-destructive {
   border-left: 4px solid #e74c3c !important;
+}
+
+/* Одна кнопка «Домой» на хабах — на всю ширину контента, без отдельной «панели» */
+.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px 0 20px;
+  margin: 0 auto 8px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button,
+.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button,
+.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button {
+  flex: 1 1 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button,
+.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button,
+.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button {
+  width: 100% !important;
+  min-height: 72px !important;
+  padding: 16px 24px !important;
+  font-size: 1.2em !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
 }
 
 /* ==========================================================

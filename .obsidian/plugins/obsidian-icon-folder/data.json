@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiWorkflow",
-      "LiGlobe",
-      "LiMap",
+      "LiCalendarDays",
+      "LiCalendarCheck",
       "LiAtom",
-      "LiCalendar"
+      "LiBook",
+      "LiSwatchBook"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -38,5 +38,12 @@
   "PARA": "LiComponent",
   "ZETTA": "LiAtom",
   "SYSTEM": "LiWorkflow",
-  "DAILY": "LiCalendar"
+  "DAILY": "LiCalendar",
+  "HUB/MOCs": "LiMap",
+  "HUB/Home.md": "LiHome",
+  "ZETTA/Flashcards": "LiRepeat",
+  "ZETTA/FLEETING": "LiInbox",
+  "ZETTA/Literature": "LiBook",
+  "ZETTA/Permanent": "LiAtom",
+  "HUB/Periodic hub.md": "LiCalendarDays"
 }

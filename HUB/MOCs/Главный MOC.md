@@ -9,8 +9,8 @@ obsidianUIMode: preview
 # Главный MOC
 
 > Точка входа в темы и карты содержания.
->
-> Куда дальше: [[HUB/Home|Домой]] — [[HUB/Periodic hub|Цикл]] — [[ZETTA/FLEETING/Fleeting hub|Fleeting hub]]
+
+`BUTTON[hub_nav_home]`
 
 ## :LiMap: Тематические карты
 
@@ -25,4 +25,16 @@ LIST
 FROM "HUB/MOCs"
 WHERE type = "moc" AND file.name != this.file.name
 SORT file.name ASC
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: primary
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
 ```

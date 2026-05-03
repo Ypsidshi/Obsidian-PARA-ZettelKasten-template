@@ -9,7 +9,7 @@ obsidianUIMode: preview
 
 > Открыть **текущую** daily, weekly или monthly: Periodic Notes создаст файл по шаблону, если его ещё нет.
 
-> [[HUB/Home|Домой]]
+`BUTTON[hub_nav_home]`
 
 `BUTTON[pn_daily]` `BUTTON[pn_weekly]` `BUTTON[pn_monthly]`
 
@@ -52,4 +52,16 @@ tooltip: Открыть или создать monthly на этот месяц
 actions:
   - type: command
     command: periodic-notes:open-monthly-note
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: primary
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
 ```

@@ -8,8 +8,8 @@ obsidianUIMode: preview
 # FLEETING
 
 > Входящий слой ZETTA: быстрые черновики до разбора в permanent или literature.
->
-> Куда дальше: [[HUB/Home|Домой]] — [[HUB/Periodic hub|Цикл]] — [[HUB/MOCs/Главный MOC|Главный MOC]]
+
+`BUTTON[hub_nav_home]`
 
 ## :LiList: Очередь
 
@@ -24,3 +24,15 @@ SORT file.ctime DESC
 
 - Кнопка **Fleeting** на [[HUB/Home|Домой]]
 - QuickAdd: **New Fleeting**
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: primary
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```
