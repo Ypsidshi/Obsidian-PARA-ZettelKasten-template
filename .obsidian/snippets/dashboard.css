@@ -1,0 +1,366 @@
+/* ==========================================================
+   Dashboard — Blue-Steel Metallic
+   Only affects notes with cssclasses: [dashboard]
+   ========================================================== */
+
+/* ── Palette — blue-grey metallic, not pure black ──────────
+   Works with dark themes; light theme override at bottom.
+   --ds-bg:       #1a2030   page (steel blue-grey, not black)
+   --ds-bg2:      #1e2640   surface
+   --ds-bg3:      #252d45   elevated cards
+   --ds-border:   #2e3a55   borders
+   --ds-border2:  #253048   subtle
+   --ds-accent:   #4d89d3   softer blue
+   --ds-accent2:  #6ba3e8   hover
+   --ds-accent3:  #93c5fd   light (links)
+   --ds-text:     #cdd6f4   primary (warm-cool white)
+   --ds-muted:    #8892ab   muted
+   --ds-glow:     rgba(77,137,211,0.18)
+   ───────────────────────────────────────────────────────── */
+
+.dashboard {
+  --ds-bg:      #1c1c1e;   /* Apple-style dark metallic */
+  --ds-bg2:     #e5e4e2;   /* platinum grey panels */
+  --ds-bg3:     #3a3a3c;   /* elevated */
+  --ds-border:  #48484a;   /* border */
+  --ds-border2: #3a3a3c;   /* subtle */
+  --ds-accent:  #2459B8;
+  --ds-accent2: #2459B8;
+  --ds-accent3: #2459B8;
+  --ds-text:    #f2f2f7;   /* cool white */
+  --ds-muted:   #8e8e93;   /* Apple grey */
+  --ds-glow:    rgba(77, 137, 211, 0.18);
+}
+
+@media (prefers-color-scheme: light) {
+  .dashboard {
+    --ds-bg:      #f2f2f7;
+    --ds-bg2:     #e5e5ea;
+    --ds-bg3:     #d1d1d6;
+    --ds-border:  #c7c7cc;
+    --ds-border2: #d1d1d6;
+    --ds-accent:  #2563eb;
+    --ds-accent2: #3b82f6;
+    --ds-accent3: #1d4ed8;
+    --ds-text:    #1c1c1e;
+    --ds-muted:   #6c6c70;
+    --ds-glow:    rgba(37, 99, 235, 0.12);
+  }
+}
+
+/* ── Page background — высокая специфичность для перебива тем ─ */
+body .markdown-preview-view.dashboard,
+body .workspace-leaf-content .markdown-preview-view.dashboard,
+.markdown-preview-view.dashboard {
+  background: var(--ds-bg) !important;
+  background-color: var(--ds-bg) !important;
+  color: var(--ds-text) !important;
+}
+
+body .markdown-preview-view.dashboard .markdown-preview-section,
+body .markdown-preview-view.dashboard .markdown-preview-sizer,
+.markdown-preview-view.dashboard .markdown-preview-section,
+.markdown-preview-view.dashboard .markdown-preview-section > div {
+  background: var(--ds-bg) !important;
+  background-color: var(--ds-bg) !important;
+}
+
+/* На случай, если контейнер выше тоже имеет фон */
+.workspace-leaf-content[data-type="markdown"]:has(.markdown-preview-view.dashboard) {
+  background: var(--ds-bg) !important;
+}
+
+.markdown-preview-view.dashboard .markdown-preview-sizer {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 40px 48px !important;
+}
+
+/* ── Hide chrome ─────────────────────────────────────────── */
+.dashboard .metadata-container,
+.dashboard .inline-title,
+.dashboard .frontmatter-container { display: none !important; }
+.dashboard hr { display: none !important; }
+
+/* ── H1 ──────────────────────────────────────────────────── */
+.dashboard h1 {
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.dashboard h1::before,
+.dashboard h1::after { font-size: 2.6rem; }
+
+.dashboard h1::before {
+  content: "";
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--ds-accent), var(--ds-accent2));
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center / contain;
+}
+
+.dashboard h1::after {
+  content: "Second Brain";
+  color: var(--ds-accent2) !important;
+  -webkit-text-fill-color: var(--ds-accent2) !important;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ── Subtitle ────────────────────────────────────────────── */
+.dashboard blockquote {
+  border: none !important;
+  background: transparent !important;
+  text-align: center;
+  font-style: italic;
+  color: var(--ds-muted) !important;
+  font-size: 1em;
+  margin: 0 auto 32px !important;
+  padding: 0 !important;
+  max-width: 600px;
+}
+
+/* ── H2 ──────────────────────────────────────────────────── */
+.dashboard h2 {
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ds-muted) !important;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ds-border2) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard h2::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background-color: var(--ds-muted);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.dashboard h2[data-heading="Inbox"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
+}
+.dashboard h2[data-heading="Сейчас читаю"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
+}
+.dashboard h2[data-heading="Последние Permanent"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
+}
+.dashboard h2[data-heading="Карты тем"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
+}
+.dashboard h2[data-heading="Статистика"]::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
+}
+
+/* ── Button panel ────────────────────────────────────────── */
+
+/* Force each mb-button to inline-flex so they sit side by side */
+.dashboard .mb-button {
+  display: inline-flex !important;
+  vertical-align: top;
+  width: 130px;
+  min-height: 66px;
+  margin: 4px !important;
+}
+
+/* The paragraph containing buttons becomes the panel */
+.dashboard p:has(.mb-button),
+.dashboard div:has(> .mb-button),
+.dashboard .mod-cm6 div:has(.mb-button) {
+  background: var(--ds-bg3) !important;
+  border: 1px solid var(--ds-border) !important;
+  border-radius: 14px;
+  padding: 16px 20px !important;
+  margin: 0 0 28px 0 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 4px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  line-height: 1;
+}
+
+.dashboard .mb-button button {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 66px !important;
+  padding: 10px 12px !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  border-radius: 9px !important;
+  border: 1px solid var(--ds-border) !important;
+  background: var(--ds-bg2) !important;
+  color: var(--ds-text) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+  line-height: 1.25 !important;
+}
+
+.dashboard .mb-button button:hover {
+  transform: translateY(-2px) !important;
+  border-color: var(--ds-accent) !important;
+  background: var(--ds-bg3) !important;
+  box-shadow: 0 0 14px var(--ds-glow), 0 4px 16px rgba(0,0,0,0.35) !important;
+  color: var(--ds-accent3) !important;
+}
+
+.dashboard .mb-button button:active {
+  transform: translateY(0) !important;
+}
+
+.dashboard .mb-button .mb-button-primary {
+  border-left: 3px solid var(--ds-accent) !important;
+}
+
+/* ── Dataview cards ──────────────────────────────────────── */
+.dashboard .block-language-dataview {
+  background: var(--ds-bg2) !important;
+  border: 1px solid var(--ds-border2) !important;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  color: var(--ds-text) !important;
+}
+
+.dashboard .block-language-dataview ul { margin: 0; padding-left: 18px; }
+.dashboard .block-language-dataview li { margin: 5px 0; color: var(--ds-text); }
+
+.dashboard .block-language-dataview a {
+  color: var(--ds-accent3) !important;
+  text-decoration: none !important;
+}
+.dashboard .block-language-dataview a:hover {
+  color: var(--ds-accent2) !important;
+  text-decoration: underline !important;
+}
+
+.dashboard .block-language-dataview table { border-collapse: collapse; width: 100%; }
+.dashboard .block-language-dataview thead { border-bottom: 1px solid var(--ds-border) !important; }
+.dashboard .block-language-dataview th {
+  padding: 8px 12px;
+  color: var(--ds-muted);
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  border: none;
+}
+.dashboard .block-language-dataview td { padding: 8px 12px; border: none; color: var(--ds-text); }
+.dashboard .block-language-dataview tr:hover td { background: rgba(77,137,211,0.07); }
+
+/* Скрыть embed .buttons.md полностью */
+.dashboard .internal-embed[src*=".buttons"] { display: none !important; }
+
+/* ── Hide meta-bind definition blocks полностью ─────────── */
+.dashboard .block-language-meta-bind-button,
+.dashboard div:has(> .block-language-meta-bind-button),
+.dashboard .markdown-preview-section > div:has(> pre.language-meta-bind-button) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* H2 — тёмно-синий */
+.dashboard h2,
+.dashboard h2[data-heading]::before { color: var(--ds-accent2) !important; }
+.dashboard h2::before { background-color: var(--ds-accent2) !important; }
+
+/* Callout [!card] — единый дашборд с заголовком внутри */
+.dashboard .callout[data-callout="card"] {
+  background: var(--ds-bg2) !important;
+  border: 1px solid var(--ds-border) !important;
+  border-radius: 12px !important;
+  margin: 18px 0 !important;
+  padding: 14px 18px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.dashboard .callout[data-callout="card"] .callout-title {
+  background: transparent !important;
+  padding: 0 0 10px 0 !important;
+  color: var(--ds-accent2) !important;
+  font-weight: 700;
+  font-size: 1.05em;
+  border-bottom: 1px solid var(--ds-border2);
+  margin-bottom: 10px;
+}
+.dashboard .callout[data-callout="card"] .callout-icon { display: none; }
+.dashboard .callout[data-callout="card"] .callout-content,
+.dashboard .callout[data-callout="card"] blockquote,
+.dashboard .callout[data-callout="card"] .callout-content > * {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.dashboard .callout[data-callout="card"] a { color: var(--ds-accent2) !important; }
+
+/* Скрыть код-блоки meta-bind полностью */
+.dashboard pre:has(> code.language-meta-bind-button),
+.dashboard .markdown-rendered pre.language-meta-bind-button {
+  display: none !important;
+}
+
+/* H2 встраивается ВНУТРЬ карточки Dataview через CSS-приклеивание */
+.dashboard h2 {
+  background: var(--ds-bg2) !important;
+  border: 1px solid var(--ds-border) !important;
+  border-bottom: none !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 14px 18px 10px !important;
+  margin: 24px 0 0 0 !important;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+}
+
+.dashboard h2 + p,
+.dashboard h2 + p + .block-language-dataview,
+.dashboard h2 + .block-language-dataview,
+.dashboard .block-language-dataview {
+  border-radius: 0 0 10px 10px !important;
+  border-top: none !important;
+  margin-top: 0 !important;
+  padding-top: 8px !important;
+}
+
+/* Кнопки — текст тёмно-синий */
+.dashboard .mb-button button {
+  color: var(--ds-accent2) !important;
+  font-weight: 600 !important;
+}
+.dashboard .mb-button button:hover {
+  color: var(--ds-accent3) !important;
+}

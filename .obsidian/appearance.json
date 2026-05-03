@@ -1,0 +1,9 @@
+{
+  "enabledCssSnippets": [
+    "home-button",
+    "dashboard"
+  ],
+  "cssTheme": "Minimal",
+  "theme": "moonstone",
+  "accentColor": "#103a9e"
+}
