@@ -1,27 +1,19 @@
-<%*
-const ts = tp.date.now("YYYY-MM-DD HH:mm");
-const monthName = tp.date.now("MMMM YYYY");
-const prevMonth = tp.date.now("YYYY-MM", "-1M");
-const nextMonth = tp.date.now("YYYY-MM", "+1M");
-const year = tp.date.now("YYYY");
-const monthNum = tp.date.now("M");
--%>
 ---
-created: <% ts %>
+created: 2026-05-02 12:40
 type: monthly
 tags: [periodic/monthly]
-prev-month: "[[<% prevMonth %>]]"
+prev-month: "[[2026-05]]"
 ---
 
-# 🗓️ <% monthName %>
+# 🗓️ May 2026
 
-← [[<% prevMonth %>|Прошлый месяц]] | [[<% nextMonth %>|Следующий месяц]] →
+← [[2026-05|Прошлый месяц]] | [[2026-05|Следующий месяц]] →
 
 ## 🔄 Что я обещал изменить в прошлом месяце
-*(подтягивается из прошлого Monthly)*
+*(подтягивается из прошлого Monthly — перечитай и оцени)*
 ```dataview
 LIST without id L.text
-FROM [[<% prevMonth %>]]
+FROM [[2026-05]]
 FLATTEN file.lists as L
 WHERE contains(L.section.subpath, "Что меняю")
 ```
@@ -33,8 +25,8 @@ WHERE contains(L.section.subpath, "Что меняю")
 ```dataview
 TABLE length(rows) as "Создано"
 FROM ""
-WHERE file.cday.year = <% year %>
-  AND file.cday.month = <% monthNum %>
+WHERE file.cday.year = 2026
+  AND file.cday.month = 5
   AND !contains(file.path, "Templates")
 GROUP BY type
 ```
@@ -44,8 +36,8 @@ GROUP BY type
 LIST
 FROM ""
 WHERE type = "permanent"
-  AND file.cday.year = <% year %>
-  AND file.cday.month = <% monthNum %>
+  AND file.cday.year = 2026
+  AND file.cday.month = 5
   AND !contains(file.path, "Templates")
 SORT file.ctime ASC
 ```
@@ -55,13 +47,14 @@ SORT file.ctime ASC
 LIST
 FROM ""
 WHERE type = "literature" AND status = "done"
-  AND file.mday.year = <% year %>
-  AND file.mday.month = <% monthNum %>
+  AND file.mday.year = 2026
+  AND file.mday.month = 5
 ```
 
 ## 🌟 Главные уроки месяца
-*3–5 пунктов.*
+*3–5 пунктов. Что я понял, чего не знал месяц назад. Конкретно.*
 - 
 
 ## 🔄 Что меняю в следующем месяце
+*Конкретные изменения. Не "буду больше читать", а "ставлю напоминание читать 20 минут после завтрака".*
 - 

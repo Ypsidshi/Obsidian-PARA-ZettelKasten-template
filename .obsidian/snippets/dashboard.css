@@ -1,387 +1,261 @@
 /* ==========================================================
-   Dashboard — Blue-Steel Metallic
-   Only affects notes with cssclasses: [dashboard]
+   Dashboard styles — для заметок с cssclasses: [dashboard]
+   Применяется к 🏠 Home.md в Reading View
+   Кнопки реализованы через Meta Bind плагин
    ========================================================== */
 
-/* ── Palette — blue-grey metallic, not pure black ──────────
-   Works with dark themes; light theme override at bottom.
-   --ds-bg:       #1a2030   page (steel blue-grey, not black)
-   --ds-bg2:      #1e2640   surface
-   --ds-bg3:      #252d45   elevated cards
-   --ds-border:   #2e3a55   borders
-   --ds-border2:  #253048   subtle
-   --ds-accent:   #4d89d3   softer blue
-   --ds-accent2:  #6ba3e8   hover
-   --ds-accent3:  #93c5fd   light (links)
-   --ds-text:     #cdd6f4   primary (warm-cool white)
-   --ds-muted:    #8892ab   muted
-   --ds-glow:     rgba(77,137,211,0.18)
-   ───────────────────────────────────────────────────────── */
-
-.dashboard {
-  --ds-bg:      #1c1c1e;   /* Apple-style dark metallic */
-  --ds-bg2:     #e5e4e2;   /* platinum grey panels */
-  --ds-bg3:     #3a3a3c;   /* elevated */
-  --ds-border:  #48484a;   /* border */
-  --ds-border2: #3a3a3c;   /* subtle */
-  --ds-accent:  #2459B8;
-  --ds-accent2: #2459B8;
-  --ds-accent3: #2459B8;
-  --ds-text:    #f2f2f7;   /* cool white */
-  --ds-muted:   #8e8e93;   /* Apple grey */
-  --ds-glow:    rgba(77, 137, 211, 0.18);
+/* Скрываем frontmatter properties и inline title */
+.dashboard .metadata-container,
+.dashboard .inline-title,
+.dashboard .frontmatter-container {
+  display: none !important;
 }
 
-@media (prefers-color-scheme: light) {
-  .dashboard {
-    --ds-bg:      #f2f2f7;
-    --ds-bg2:     #e5e5ea;
-    --ds-bg3:     #d1d1d6;
-    --ds-border:  #c7c7cc;
-    --ds-border2: #d1d1d6;
-    --ds-accent:  #2563eb;
-    --ds-accent2: #3b82f6;
-    --ds-accent3: #1d4ed8;
-    --ds-text:    #1c1c1e;
-    --ds-muted:   #6c6c70;
-    --ds-glow:    rgba(37, 99, 235, 0.12);
-  }
-}
-
-/* ── Page background — высокая специфичность для перебива тем ─ */
-body .markdown-preview-view.dashboard,
-body .workspace-leaf-content .markdown-preview-view.dashboard,
+/* Центрируем содержимое */
 .markdown-preview-view.dashboard {
-  background: var(--ds-bg) !important;
-  background-color: var(--ds-bg) !important;
-  color: var(--ds-text) !important;
-}
-
-body .markdown-preview-view.dashboard .markdown-preview-section,
-body .markdown-preview-view.dashboard .markdown-preview-sizer,
-.markdown-preview-view.dashboard .markdown-preview-section,
-.markdown-preview-view.dashboard .markdown-preview-section > div {
-  background: var(--ds-bg) !important;
-  background-color: var(--ds-bg) !important;
-}
-
-/* На случай, если контейнер выше тоже имеет фон */
-.workspace-leaf-content[data-type="markdown"]:has(.markdown-preview-view.dashboard) {
-  background: var(--ds-bg) !important;
+  padding: 32px 48px !important;
 }
 
 .markdown-preview-view.dashboard .markdown-preview-sizer {
   max-width: 1100px !important;
   margin: 0 auto !important;
-  padding: 40px 48px !important;
 }
 
-/* ── Hide chrome ─────────────────────────────────────────── */
-.dashboard .metadata-container,
-.dashboard .inline-title,
-.dashboard .frontmatter-container { display: none !important; }
-.dashboard hr { display: none !important; }
-
-/* ── H1 ──────────────────────────────────────────────────── */
+/* Главный заголовок — тёмно-синий градиент + иконка мозга */
 .dashboard h1 {
-  font-size: 0;
+  font-size: 2.4em;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin-top: 0;
-  margin-bottom: 6px;
 }
 
-.dashboard h1::before,
-.dashboard h1::after { font-size: 2.6rem; }
+/* Текст заголовка с градиентом */
+.dashboard h1::after {
+  content: "Second Brain";
+  background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
+/* Скрываем оригинальный текст H1, показываем только через ::after */
+.dashboard h1 {
+  font-size: 0;
+}
+.dashboard h1::before,
+.dashboard h1::after {
+  font-size: 2.4rem;
+}
+
+/* Иконка мозга — монохромная, цвет в тон градиенту */
 .dashboard h1::before {
   content: "";
   display: inline-block;
-  width: 2.6rem;
-  height: 2.6rem;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--ds-accent), var(--ds-accent2));
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center / contain;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center / contain;
+  width: 1em;
+  height: 1em;
+  background-color: var(--text-accent);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z'/><path d='M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z'/><path d='M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4'/><path d='M17.599 6.5a3 3 0 0 0 .399-1.375'/><path d='M6.003 5.125A3 3 0 0 0 6.401 6.5'/><path d='M3.477 10.896a4 4 0 0 1 .585-.396'/><path d='M19.938 10.5a4 4 0 0 1 .585.396'/><path d='M6 18a4 4 0 0 1-1.967-.516'/><path d='M19.967 17.484A4 4 0 0 1 18 18'/></svg>") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  vertical-align: middle;
 }
 
-.dashboard h1::after {
-  content: "Second Brain";
-  color: var(--ds-accent2) !important;
-  -webkit-text-fill-color: var(--ds-accent2) !important;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-/* ── Subtitle ────────────────────────────────────────────── */
+/* Подзаголовок-цитата */
 .dashboard blockquote {
-  border: none !important;
-  background: transparent !important;
+  border: none;
+  background: transparent;
   text-align: center;
   font-style: italic;
-  color: var(--ds-muted) !important;
-  font-size: 1em;
-  margin: 0 auto 32px !important;
-  padding: 0 !important;
+  color: var(--text-muted);
+  font-size: 1.05em;
+  margin: 0 auto 24px;
+  padding: 0;
   max-width: 600px;
 }
 
-/* ── H2 ──────────────────────────────────────────────────── */
+/* H2 — заголовки секций с монохромными иконками */
 .dashboard h2 {
-  font-size: 0.75em;
+  font-size: 1.3em;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ds-muted) !important;
-  margin-top: 36px;
-  margin-bottom: 12px;
+  margin-top: 32px;
+  margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--ds-border2) !important;
+  border-bottom: 2px solid var(--background-modifier-border);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* Базовый стиль иконки перед H2 */
 .dashboard h2::before {
   content: "";
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  background-color: var(--ds-muted);
+  background-color: currentColor;
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center;
           mask-position: center;
   -webkit-mask-size: contain;
           mask-size: contain;
+  opacity: 0.8;
 }
 
+/* Inbox — lucide:inbox */
 .dashboard h2[data-heading="Inbox"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
 }
+
+/* Сейчас читаю — lucide:book-open */
 .dashboard h2[data-heading="Сейчас читаю"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
-          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
 }
+
+/* Последние Permanent — lucide:file-text */
 .dashboard h2[data-heading="Последние Permanent"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
 }
+
+/* Карты тем — lucide:map */
 .dashboard h2[data-heading="Карты тем"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
 }
+
+/* Статистика — lucide:bar-chart-2 */
 .dashboard h2[data-heading="Статистика"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
 }
 
-/* ── Button panel ────────────────────────────────────────── */
+.dashboard hr { display: none; }
 
-/* Force each mb-button to inline-flex so they sit side by side */
-.dashboard .mb-button {
-  display: inline-flex !important;
-  vertical-align: top;
-  width: 130px;
-  min-height: 66px;
-  margin: 4px !important;
+/* ==========================================================
+   ПАНЕЛЬ КНОПОК (Meta Bind)
+   Параграф, содержащий inline `BUTTON[id]`, оборачиваем в панель.
+   Inline meta-bind-кнопки имеют класс .mb-button.
+   ========================================================== */
+
+/* Параграф с кнопками — превращаем в панель */
+.dashboard p:has(.mb-button) {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 14px;
+  margin: 0 auto 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  max-width: 100%;
 }
 
-/* The paragraph containing buttons becomes the panel */
-.dashboard p:has(.mb-button),
-.dashboard div:has(> .mb-button),
-.dashboard .mod-cm6 div:has(.mb-button) {
-  background: var(--ds-bg3) !important;
-  border: 1px solid var(--ds-border) !important;
-  border-radius: 14px;
-  padding: 16px 20px !important;
-  margin: 0 0 28px 0 !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.05),
-    0 4px 20px rgba(0,0,0,0.3);
-  text-align: center;
-  line-height: 1;
+/* Каждая кнопка — карточка */
+.dashboard .mb-button {
+  flex: 1 1 140px;
+  min-height: 70px;
+  max-width: 200px;
 }
 
 .dashboard .mb-button button {
   width: 100% !important;
   height: 100% !important;
-  min-height: 66px !important;
-  padding: 10px 12px !important;
-  font-size: 0.85em !important;
+  min-height: 70px !important;
+  padding: 14px 16px !important;
+  font-size: 0.95em !important;
   font-weight: 500 !important;
-  border-radius: 9px !important;
-  border: 1px solid var(--ds-border) !important;
-  background: var(--ds-bg2) !important;
-  color: var(--ds-text) !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  background: var(--background-primary) !important;
+  color: var(--text-normal) !important;
   cursor: pointer !important;
-  transition: all 0.15s ease !important;
+  transition: all 0.18s ease !important;
+  text-align: center !important;
   display: flex !important;
-  flex-direction: column;
   align-items: center !important;
   justify-content: center !important;
-  gap: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
-  line-height: 1.25 !important;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  line-height: 1.2 !important;
 }
 
 .dashboard .mb-button button:hover {
-  transform: translateY(-2px) !important;
-  border-color: var(--ds-accent) !important;
-  background: var(--ds-bg3) !important;
-  box-shadow: 0 0 14px var(--ds-glow), 0 4px 16px rgba(0,0,0,0.35) !important;
-  color: var(--ds-accent3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+  border-color: var(--interactive-accent) !important;
+  background: var(--background-modifier-hover) !important;
 }
 
 .dashboard .mb-button button:active {
-  transform: translateY(0) !important;
+  transform: translateY(0);
 }
 
+/* Цветные акценты по style: primary/destructive/default */
 .dashboard .mb-button .mb-button-primary {
-  border-left: 3px solid var(--ds-accent) !important;
+  border-left: 4px solid var(--interactive-accent) !important;
 }
 
-/* ── Dataview cards ──────────────────────────────────────── */
+.dashboard .mb-button .mb-button-destructive {
+  border-left: 4px solid #e74c3c !important;
+}
+
+/* ==========================================================
+   Карточки для секций с Dataview
+   ========================================================== */
 .dashboard .block-language-dataview {
-  background: var(--ds-bg2) !important;
-  border: 1px solid var(--ds-border2) !important;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
   border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  color: var(--ds-text) !important;
+  padding: 16px 20px;
+  margin-top: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.dashboard .block-language-dataview ul { margin: 0; padding-left: 18px; }
-.dashboard .block-language-dataview li { margin: 5px 0; color: var(--ds-text); }
-
-.dashboard .block-language-dataview a {
-  color: var(--ds-accent3) !important;
-  text-decoration: none !important;
-}
-.dashboard .block-language-dataview a:hover {
-  color: var(--ds-accent2) !important;
-  text-decoration: underline !important;
+.dashboard .block-language-dataview ul {
+  margin: 0;
+  padding-left: 20px;
 }
 
-.dashboard .block-language-dataview table { border-collapse: collapse; width: 100%; }
-.dashboard .block-language-dataview thead { border: none !important; }
-.dashboard .block-language-dataview th {
-  padding: 6px 12px;
-  color: var(--ds-accent2) !important;
-  font-size: 0.82em;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  border: none !important;
-  background: transparent !important;
+.dashboard .block-language-dataview li {
+  margin: 4px 0;
 }
+
+.dashboard .block-language-dataview table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.dashboard .block-language-dataview thead {
+  border-bottom: 2px solid var(--background-modifier-border);
+}
+
+.dashboard .block-language-dataview th,
 .dashboard .block-language-dataview td {
-  padding: 6px 12px;
-  border: none !important;
-  color: #1c1c1e !important;
+  padding: 8px 12px;
+  text-align: left;
+  border: none;
 }
-.dashboard .block-language-dataview li { color: #1c1c1e !important; }
-@media (prefers-color-scheme: dark) {
-  .dashboard .block-language-dataview td,
-  .dashboard .block-language-dataview li { color: #f2f2f7 !important; }
+
+.dashboard .block-language-dataview tr:hover {
+  background: var(--background-modifier-hover);
 }
-.dashboard .block-language-dataview tr:hover td { background: rgba(77,137,211,0.07); }
 
-/* Скрыть embed .buttons.md полностью */
-.dashboard .internal-embed[src*=".buttons"] { display: none !important; }
-
-/* ── Hide meta-bind definition blocks полностью ─────────── */
-.dashboard .block-language-meta-bind-button,
-.dashboard div:has(> .block-language-meta-bind-button),
-.dashboard .markdown-preview-section > div:has(> pre.language-meta-bind-button) {
+/* Прячем кодовые блоки meta-bind-button (они только для определения кнопок) */
+.dashboard .markdown-preview-section:has(.block-language-meta-bind-button),
+.dashboard .block-language-meta-bind-button {
   display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* H2 — тёмно-синий */
-.dashboard h2,
-.dashboard h2[data-heading]::before { color: var(--ds-accent2) !important; }
-.dashboard h2::before { background-color: var(--ds-accent2) !important; }
-
-/* Callout [!card] — единый дашборд с заголовком внутри */
-.dashboard .callout[data-callout="card"] {
-  background: var(--ds-bg2) !important;
-  border: 1px solid var(--ds-border) !important;
-  border-radius: 12px !important;
-  margin: 18px 0 !important;
-  padding: 12px 16px !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-/* Убрать любые hr внутри карточки */
-.dashboard .callout[data-callout="card"] hr { display: none !important; }
-.dashboard .callout[data-callout="card"] .callout-title {
-  background: transparent !important;
-  padding: 0 0 8px 0 !important;
-  color: var(--ds-accent2) !important;
-  font-weight: 700;
-  font-size: 1.05em;
-  border: none !important;
-  margin-bottom: 4px;
-}
-.dashboard .callout[data-callout="card"] .callout-icon { display: none; }
-.dashboard .callout[data-callout="card"] .callout-content,
-.dashboard .callout[data-callout="card"] blockquote,
-.dashboard .callout[data-callout="card"] .callout-content > * {
-  padding: 0 !important;
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.dashboard .callout[data-callout="card"] a { color: var(--ds-accent2) !important; }
-
-/* Скрыть код-блоки meta-bind полностью — все варианты DOM */
-.dashboard pre:has(> code.language-meta-bind-button),
-.dashboard .markdown-rendered pre.language-meta-bind-button,
-.dashboard .el-pre:has(.language-meta-bind-button),
-.dashboard div:has(> pre > code.language-meta-bind-button),
-.dashboard .markdown-rendered > div:has(> pre code.language-meta-bind-button),
-.dashboard pre.language-meta-bind-button,
-.dashboard code.language-meta-bind-button {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-}
-
-/* H2 встраивается ВНУТРЬ карточки Dataview через CSS-приклеивание */
-.dashboard h2 {
-  background: var(--ds-bg2) !important;
-  border: 1px solid var(--ds-border) !important;
-  border-bottom: none !important;
-  border-radius: 10px 10px 0 0 !important;
-  padding: 14px 18px 10px !important;
-  margin: 24px 0 0 0 !important;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
-}
-
-.dashboard h2 + p,
-.dashboard h2 + p + .block-language-dataview,
-.dashboard h2 + .block-language-dataview,
-.dashboard .block-language-dataview {
-  border-radius: 0 0 10px 10px !important;
-  border-top: none !important;
-  margin-top: 0 !important;
-  padding-top: 8px !important;
-}
-
-/* Кнопки — текст тёмно-синий */
-.dashboard .mb-button button {
-  color: var(--ds-accent2) !important;
-  font-weight: 600 !important;
-}
-.dashboard .mb-button button:hover {
-  color: var(--ds-accent3) !important;
 }

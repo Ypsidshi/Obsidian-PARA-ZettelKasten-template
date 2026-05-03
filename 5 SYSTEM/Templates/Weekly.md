@@ -1,20 +1,13 @@
-<%*
-const ts = tp.date.now("YYYY-MM-DD HH:mm");
-const week = tp.date.now("YYYY-[W]ww");
-const prevWeek = tp.date.now("YYYY-[W]ww", -7);
-const nextWeek = tp.date.now("YYYY-[W]ww", 7);
-const month = tp.date.now("YYYY-MM");
--%>
 ---
-created: <% ts %>
+created: 2026-05-02 11:46
 type: weekly
 tags: [periodic/weekly]
-month: "[[<% month %>]]"
+month: "[[2026-05]]"
 ---
 
-# 📆 Неделя <% week %>
+# 📆 Неделя 2026-W18
 
-← [[<% prevWeek %>|Прошлая неделя]] | [[<% nextWeek %>|Следующая неделя]] →
+← [[2026-W17|Прошлая неделя]] | [[2026-W19|Следующая неделя]] →
 
 ## 🎯 Цели недели
 

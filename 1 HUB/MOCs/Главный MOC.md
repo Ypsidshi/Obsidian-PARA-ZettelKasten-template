@@ -16,7 +16,7 @@ tags: [moc, moc/root]
 ## 📥 Все MOC vault'а (авто)
 ```dataview
 LIST
-FROM "1 HUB/MOCs"
+FROM "SYSTEM/MOCs"
 WHERE type = "moc" AND file.name != this.file.name
 SORT file.name ASC
 ```

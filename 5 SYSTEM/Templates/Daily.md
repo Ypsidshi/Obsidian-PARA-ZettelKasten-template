@@ -1,23 +1,14 @@
-<%*
-const today = tp.date.now("YYYY-MM-DD");
-const yesterday = tp.date.now("YYYY-MM-DD", -1);
-const tomorrow = tp.date.now("YYYY-MM-DD", 1);
-const week = tp.date.now("YYYY-[W]ww");
-const month = tp.date.now("YYYY-MM");
-const heading = tp.date.now("dddd, DD MMMM YYYY");
-const ts = tp.date.now("YYYY-MM-DD HH:mm");
--%>
 ---
-created: <% ts %>
+created: 2026-05-02 12:40
 type: daily
 tags: [periodic/daily]
-week: "[[<% week %>]]"
-month: "[[<% month %>]]"
+week: "[[2026-W18]]"
+month: "[[2026-05]]"
 ---
 
-# 📅 <% heading %>
+# 📅 Saturday, 02 May 2026
 
-← [[<% yesterday %>|Вчера]] | [[<% tomorrow %>|Завтра]] →
+← [[2026-05-01|Вчера]] | [[2026-05-03|Завтра]] →
 
 ## 🎯 Фокус дня
 *Что сегодня главное? Одна-две вещи. Не задачи, а намерение.*
@@ -29,7 +20,7 @@ month: "[[<% month %>]]"
 ## 📥 Inbox сейчас
 ```dataview
 LIST
-FROM "1 HUB/Inbox"
+FROM "HUB/Inbox"
 SORT file.ctime ASC
 ```
 
@@ -37,7 +28,7 @@ SORT file.ctime ASC
 ```dataview
 LIST
 FROM ""
-WHERE file.cday = date("<% today %>")
+WHERE file.cday = date("2026-05-02")
   AND file.name != this.file.name
   AND !contains(file.path, "Templates")
 SORT file.ctime ASC
