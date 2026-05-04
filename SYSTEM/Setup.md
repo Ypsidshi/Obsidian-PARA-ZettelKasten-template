@@ -101,7 +101,7 @@ SYSTEM
 
 Шаблоны Daily / Weekly / Monthly задают `cssclasses` для дашборда (`dashboard` + `periodic-daily` / `periodic-weekly` / `periodic-monthly`) и `obsidianUIMode: preview`; оформление и иконки секций — в `.obsidian/snippets/dashboard.css`. Сводки — **таблицы Dataview**.
 
-Хаб **[[HUB/Periodic hub|Periodic hub]]** (`cssclasses: dashboard, periodic-hub`): кнопки Meta Bind для открытия/создания текущих daily, weekly, monthly (команды Periodic Notes), оформление как на Home.
+Хаб **[[HUB/Periodic hub|Journal]]** (`cssclasses: dashboard, periodic-hub`): кнопки Meta Bind для открытия/создания текущих daily, weekly, monthly (команды Periodic Notes), оформление как на Home.
 - `Permanent.md` — атомная заметка (Zettelkasten)
 - `Literature.md` — заметка из источника
 - `MOC.md` — карта содержания

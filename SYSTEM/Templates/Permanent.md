@@ -3,7 +3,13 @@ created: <% tp.date.now("YYYY-MM-DD HH:mm") %>
 type: permanent
 tags: []
 status: seed
+cssclasses:
+  - dashboard
+  - nav-two
+obsidianUIMode: preview
 ---
+
+`BUTTON[hub_nav_main_moc]` `BUTTON[hub_nav_home]`
 
 # <% tp.file.title %>
 
@@ -27,3 +33,27 @@ status: seed
 
 ## :LiLibrary: Источники
 - 
+
+```meta-bind-button
+label: К главному MOC
+icon: lucide-map
+hidden: true
+id: hub_nav_main_moc
+style: primary
+tooltip: Открыть Главный MOC
+actions:
+  - type: open
+    link: "[[HUB/MOCs/Главный MOC|Главный MOC]]"
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: default
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```

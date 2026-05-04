@@ -23,11 +23,14 @@ tags: [periodic/weekly]
 month: "[[DAILY/Monthly/<% month %>]]"
 cssclasses:
   - dashboard
+  - nav-two
   - periodic-weekly
 obsidianUIMode: preview
 ---
 
 # Неделя <% title %>
+
+`BUTTON[nav_periodic_hub]` `BUTTON[hub_nav_home]`
 
 <%* if (prevW && nextW) { -%>
 > [!periodic-nav]
@@ -70,3 +73,28 @@ SORT file.cday ASC
 **Что вынести дальше:**
 
 - 
+
+```meta-bind-button
+label: Journal
+icon: lucide-notebook-pen
+hidden: true
+id: nav_periodic_hub
+style: primary
+tooltip: Хаб Daily / Weekly / Monthly (Periodic Notes)
+actions:
+  - type: open
+    link: "[[HUB/Periodic hub]]"
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: default
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```
+

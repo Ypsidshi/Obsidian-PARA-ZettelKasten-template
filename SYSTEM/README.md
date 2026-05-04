@@ -9,7 +9,7 @@ Obsidian-шаблон: Zettelkasten + PARA, без задач (они в Microso
 ## Структура
 
 ```
-HUB/      — Dashboard (⌂ Home), [[HUB/Periodic hub|Periodic hub]], MOCs
+HUB/      — Dashboard (⌂ Home), [[HUB/Periodic hub|Journal]], MOCs
 PARA/     — Projects · Areas · Resources · Archive
 ZETTA/    — FLEETING (черновики) · Permanent · Literature · Flashcards
 DAILY/    — Daily · Weekly · Monthly

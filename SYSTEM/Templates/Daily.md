@@ -17,25 +17,16 @@ week: "[[DAILY/Weekly/<% week %>]]"
 month: "[[DAILY/Monthly/<% month %>]]"
 cssclasses:
   - dashboard
+  - nav-two
   - periodic-daily
 obsidianUIMode: preview
 ---
 
 # <% heading %>
 
+`BUTTON[nav_periodic_hub]` `BUTTON[hub_nav_home]`
+
 ```calendar-nav
-```
-
-## :LiChartColumn: Сводка по типам
-
-```dataview
-TABLE type as "Тип", length(rows) as "Штук"
-FROM ""
-WHERE file.cday = date(this.file.name)
-  AND type
-  AND !contains(file.path, "Templates")
-GROUP BY type
-SORT length(rows) DESC
 ```
 
 ## :LiCircleDot: Фокус дня
@@ -71,3 +62,27 @@ SORT file.ctime ASC
 
 ## :LiNotebookPen: Итог дня
 
+
+```meta-bind-button
+label: Journal
+icon: lucide-notebook-pen
+hidden: true
+id: nav_periodic_hub
+style: primary
+tooltip: Хаб Daily / Weekly / Monthly (Periodic Notes)
+actions:
+  - type: open
+    link: "[[HUB/Periodic hub]]"
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: default
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```

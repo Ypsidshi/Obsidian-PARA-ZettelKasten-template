@@ -8,7 +8,7 @@ obsidianUIMode: preview
 
 > Обработка → Хранение → Связи → Запоминание
 
-`BUTTON[open_daily]` `BUTTON[open_periodic_hub]` `BUTTON[open_fleeting]` `BUTTON[new_fleeting]` `BUTTON[new_permanent]` `BUTTON[new_literature]` `BUTTON[review_cards]` `BUTTON[open_moc]` `BUTTON[open_search]`
+`BUTTON[new_fleeting]` `BUTTON[new_permanent]` `BUTTON[open_moc]` `BUTTON[review_cards]` `BUTTON[open_search]` `BUTTON[open_daily]` `BUTTON[open_periodic_hub]` `BUTTON[new_literature]` `BUTTON[open_literature_hub]` `BUTTON[open_fleeting]`
 
 ## :LiInbox: Fleeting
 ```dataview
@@ -61,42 +61,6 @@ GROUP BY type SORT length(rows) DESC
 
 
 ```meta-bind-button
-label: Daily
-icon: lucide-calendar
-hidden: true
-id: open_daily
-style: primary
-tooltip: Открыть сегодняшнюю Daily-заметку
-actions:
-  - type: command
-    command: periodic-notes:open-daily-note
-```
-
-```meta-bind-button
-label: Цикл
-icon: lucide-layout-dashboard
-hidden: true
-id: open_periodic_hub
-style: default
-tooltip: Daily, Weekly, Monthly — хаб Periodic Notes
-actions:
-  - type: open
-    link: "[[HUB/Periodic hub]]"
-```
-
-```meta-bind-button
-label: Fleeting hub
-icon: lucide-inbox
-hidden: true
-id: open_fleeting
-style: default
-tooltip: Открыть хаб FLEETING
-actions:
-  - type: open
-    link: "[[ZETTA/FLEETING/Fleeting hub]]"
-```
-
-```meta-bind-button
 label: Fleeting
 icon: lucide-pen-line
 hidden: true
@@ -121,15 +85,15 @@ actions:
 ```
 
 ```meta-bind-button
-label: Literature
-icon: lucide-book-open
+label: MOC
+icon: lucide-map
 hidden: true
-id: new_literature
+id: open_moc
 style: primary
-tooltip: Создать новую Literature-заметку
+tooltip: Открыть Главный MOC
 actions:
-  - type: command
-    command: quickadd:choice:c3fb5b88-0a08-4e45-ada7-cf3f286c38af
+  - type: open
+    link: "[[HUB/MOCs/Главный MOC|Главный MOC]]"
 ```
 
 ```meta-bind-button
@@ -145,18 +109,6 @@ actions:
 ```
 
 ```meta-bind-button
-label: MOC
-icon: lucide-map
-hidden: true
-id: open_moc
-style: primary
-tooltip: Открыть Главный MOC
-actions:
-  - type: open
-    link: "[[HUB/MOCs/Главный MOC|Главный MOC]]"
-```
-
-```meta-bind-button
 label: Поиск
 icon: lucide-search
 hidden: true
@@ -166,4 +118,64 @@ tooltip: Открыть Omnisearch
 actions:
   - type: command
     command: omnisearch:show-modal
+```
+
+```meta-bind-button
+label: Daily
+icon: lucide-calendar
+hidden: true
+id: open_daily
+style: primary
+tooltip: Открыть сегодняшнюю Daily-заметку
+actions:
+  - type: command
+    command: periodic-notes:open-daily-note
+```
+
+```meta-bind-button
+label: Journal
+icon: lucide-notebook-pen
+hidden: true
+id: open_periodic_hub
+style: default
+tooltip: Daily, Weekly, Monthly — хаб журнала (Periodic Notes)
+actions:
+  - type: open
+    link: "[[HUB/Periodic hub]]"
+```
+
+```meta-bind-button
+label: Literature
+icon: lucide-book-open
+hidden: true
+id: new_literature
+style: primary
+tooltip: Создать новую Literature-заметку
+actions:
+  - type: command
+    command: quickadd:choice:c3fb5b88-0a08-4e45-ada7-cf3f286c38af
+```
+
+```meta-bind-button
+label: Literature hub
+icon: lucide-book-open
+hidden: true
+id: open_literature_hub
+style: default
+tooltip: Хаб книг и источников
+actions:
+  - type: open
+    link: "[[ZETTA/Literature/Literature hub]]"
+```
+
+```meta-bind-button
+label: Fleeting hub
+icon: lucide-inbox
+hidden: true
+id: open_fleeting
+style: default
+tooltip: Открыть хаб FLEETING
+actions:
+  - type: open
+    link: "[[ZETTA/FLEETING/Fleeting hub]]"
 ```

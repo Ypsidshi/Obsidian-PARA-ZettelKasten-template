@@ -5,7 +5,7 @@ cssclasses: [dashboard, periodic-hub]
 obsidianUIMode: preview
 ---
 
-# Цикл
+# Journal
 
 > Открыть **текущую** daily, weekly или monthly: Periodic Notes создаст файл по шаблону, если его ещё нет.
 

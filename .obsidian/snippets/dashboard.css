@@ -1,18 +1,21 @@
 /* ==========================================================
    Dashboard — cssclasses в frontmatter заметки:
    • Home:              [home, dashboard]
-   • Fleeting hub:      [dashboard, key-page, key-page-fleeting]
+   • Fleeting / Literature hub: [dashboard, key-page, key-page-fleeting|key-page-literature]
    • Главный MOC:       [dashboard, key-page, key-page-moc]
    • Daily / Weekly / Monthly: в H2 — шорткоды Icon Folder (`:LiИмя:`); Journals ```calendar-nav```; Weekly/Monthly — callout [!periodic-nav]
-   • Periodic hub:      [dashboard, periodic-hub]
+   • Periodic hub (Journal): [dashboard, periodic-hub]
    • Guide / Setup / README: [accent-nav-h2] — синие H2 без полного layout dashboard
-   • Хабы: `BUTTON[hub_nav_home]` + сетка без max-width 1100
-   • H2 на dashboard: по центру, без border-bottom; Iconize + ::before по центру
+   • Хабы: `BUTTON[hub_nav_home]`; ширина колонки — --db-content-max (ch + px, см. корень .dashboard)
+   • Две кнопки (тема + Домой): [dashboard, nav-two] — одна строка с двумя `BUTTON[...]`
+   • H2 на dashboard: слева, с разделителем; Iconize + ::before в строке с текстом
    Акцент заголовков / H2 / Dataview: #2459b8 (Iconize в H2 + mask ::before, где нет :Li)
    ========================================================== */
 .dashboard,
 .markdown-source-view.mod-cm6.dashboard {
   --db-accent: #2459b8;
+  /* Верхняя граница колонки: ~82 символа по текущему шрифту, не больше 1100px. Узкая панель — через min(100%, …) у max-width */
+  --db-content-max: min(1100px, 82ch);
 }
 
 .dashboard .mb-button button svg,
@@ -47,7 +50,7 @@
 .markdown-source-view.mod-cm6.dashboard .cm-header-2 {
   color: var(--db-accent) !important;
   -webkit-text-fill-color: var(--db-accent) !important;
-  text-align: center !important;
+  text-align: left !important;
 }
 
 /* SYSTEM: Guide / Setup / README — синие H2 без layout .dashboard */
@@ -83,25 +86,36 @@
   display: none !important;
 }
 
+/* Fleeting / Literature / Permanent / Flashcard: nav-two — снова показываем Properties и inline title
+   (periodic daily|weekly|monthly и MOC с key-page-moc оставляем как «чистый» дашборд) */
+.dashboard.nav-two:not(.periodic-daily):not(.periodic-weekly):not(.periodic-monthly):not(.key-page-moc)
+  .metadata-container,
+.dashboard.nav-two:not(.periodic-daily):not(.periodic-weekly):not(.periodic-monthly):not(.key-page-moc)
+  .frontmatter-container,
+.dashboard.nav-two:not(.periodic-daily):not(.periodic-weekly):not(.periodic-monthly):not(.key-page-moc)
+  .inline-title {
+  display: revert !important;
+}
+
 /* Центрируем содержимое */
 .markdown-preview-view.dashboard {
   padding: 32px 48px !important;
 }
 
 .markdown-preview-view.dashboard .markdown-preview-sizer {
-  max-width: 1100px !important;
+  max-width: min(100%, var(--db-content-max)) !important;
   margin: 0 auto !important;
 }
 
-/* Хабы Periodic / Fleeting / MOC: контент на всю ширину панели заметки (кнопка «Домой» edge-to-edge в колонке) */
+/* Хабы Periodic / Fleeting / MOC: широкий sizer; кнопка «Домой» ограничена --db-content-max (как колонка на Home) */
 .markdown-preview-view.dashboard.periodic-hub,
-.markdown-preview-view.dashboard.key-page-fleeting,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature),
 .markdown-preview-view.dashboard.key-page-moc {
   padding-left: max(12px, env(safe-area-inset-left, 0px)) !important;
   padding-right: max(12px, env(safe-area-inset-right, 0px)) !important;
 }
 .markdown-preview-view.dashboard.periodic-hub .markdown-preview-sizer,
-.markdown-preview-view.dashboard.key-page-fleeting .markdown-preview-sizer,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature) .markdown-preview-sizer,
 .markdown-preview-view.dashboard.key-page-moc .markdown-preview-sizer {
   max-width: none !important;
   width: 100%;
@@ -194,6 +208,12 @@
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
 }
 
+/* Literature hub — lucide:library-big */
+.dashboard.key-page.key-page-literature h1::before {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='8' height='18' x='3' y='3' rx='1'/><path d='M7 3v18'/><path d='M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11 3 9.1 3.5c-.5.2-.8.8-.6 1.3l5 13.2'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='8' height='18' x='3' y='3' rx='1'/><path d='M7 3v18'/><path d='M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11 3 9.1 3.5c-.5.2-.8.8-.6 1.3l5 13.2'/></svg>");
+}
+
 /* Главный MOC — lucide:map */
 .dashboard.key-page.key-page-moc h1::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6'/><line x1='8' y1='2' x2='8' y2='18'/><line x1='16' y1='6' x2='16' y2='22'/></svg>");
@@ -251,19 +271,19 @@
   max-width: 600px;
 }
 
-/* H2 — по центру страницы, без нижней полосы (старый border-bottom) */
+/* H2 — обычное выравнивание слева, нижняя граница как в стандартном превью */
 .dashboard h2 {
   font-size: 1.3em;
   font-weight: 600;
   margin-top: 32px;
   margin-bottom: 16px;
-  padding-bottom: 0;
-  border-bottom: none;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  text-align: center;
+  text-align: left;
   flex-wrap: wrap;
 }
 
@@ -420,31 +440,297 @@
   border-left: 4px solid #e74c3c !important;
 }
 
-/* Одна кнопка «Домой» на хабах — на всю ширину контента, без отдельной «панели» */
-.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
-.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
-.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) {
-  width: 100%;
-  max-width: 100%;
-  padding: 8px 0 20px;
-  margin: 0 auto 8px;
+/* Ровно две кнопки в одном абзаце: [dashboard, nav-two] — тематическая + Домой (Reading + LP) */
+body .markdown-preview-view.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)),
+body .markdown-preview-view.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)),
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)),
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)),
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)),
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button)) {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px 22px 24px !important;
+  margin: 0 auto 24px !important;
+  max-width: min(100%, var(--db-content-max)) !important;
+  box-sizing: border-box !important;
+  background: var(--background-secondary) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
+}
+body .markdown-preview-view.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button,
+body .markdown-preview-view.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button {
+  flex: 1 1 min(45%, 320px) !important;
+  max-width: none !important;
+  min-height: 96px !important;
+  min-width: 0 !important;
+}
+body .markdown-preview-view.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button,
+body .markdown-preview-view.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  .markdown-reading-view
+  .el-p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button {
+  min-height: 96px !important;
+  padding: 18px 20px !important;
+  font-size: clamp(1rem, 2.2vmin, 1.2rem) !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  line-height: 1.25 !important;
+  gap: 8px !important;
+}
+body .markdown-preview-view.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button
+  svg,
+body .markdown-preview-view.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button
+  .svg-icon,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button
+  svg,
+body .markdown-source-view.mod-cm6.dashboard.nav-two
+  p:has(.mb-button ~ .mb-button):not(:has(.mb-button ~ .mb-button ~ .mb-button))
+  .mb-button
+  button
+  .svg-icon {
+  width: 1.25em !important;
+  height: 1.25em !important;
+  flex-shrink: 0 !important;
+}
+
+/* Одна кнопка «Домой» на хабах / periodic: не шире --db-content-max */
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-view.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-view.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.markdown-preview-sizer.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)),
+.dashboard.key-page-moc .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) {
+  display: block !important;
+  width: 100% !important;
+  max-width: min(100%, var(--db-content-max)) !important;
+  padding: 8px 0 20px !important;
+  margin: 0 auto 8px !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
-.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button,
-.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button,
-.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button {
-  flex: 1 1 100%;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-view.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-view.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.markdown-preview-sizer.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button,
+.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button {
+  display: block !important;
+  flex: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
 }
-.dashboard.periodic-hub p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button,
-.dashboard.key-page-fleeting p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button,
-.dashboard.key-page-moc p:has(.mb-button):not(:has(.mb-button ~ .mb-button)) .mb-button button {
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-view.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-view.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-view.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-view.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.markdown-preview-sizer.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard:is(.periodic-hub, .periodic-daily, .periodic-weekly, .periodic-monthly)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard:is(.key-page-fleeting, .key-page-literature)
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard.key-page-moc
+  p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button,
+.dashboard.key-page-moc
+  .el-p:has(.mb-button):not(:has(.mb-button ~ .mb-button))
+  .mb-button
+  button {
   width: 100% !important;
   min-height: 72px !important;
   padding: 16px 24px !important;
@@ -675,13 +961,6 @@
 .dashboard h2[data-heading=":LiInbox: Fleeting сейчас"]::before {
   -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
           mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
-}
-
-.dashboard h2[data-heading="Сводка по типам"]::before,
-.dashboard h2[data-heading="≡ Сводка по типам"]::before,
-.dashboard h2[data-heading=":LiChartColumn: Сводка по типам"]::before {
-  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
-          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/></svg>");
 }
 
 .dashboard h2[data-heading="Создано сегодня"]::before,

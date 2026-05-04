@@ -9,7 +9,12 @@ status: to-read
 progress: 
 rating: 
 tags: [literature]
+cssclasses:
+  - dashboard
+  - nav-two
 ---
+
+`BUTTON[hub_nav_literature_hub]` `BUTTON[hub_nav_home]`
 
 # <% tp.file.title %>
 
@@ -40,3 +45,27 @@ tags: [literature]
 
 ## :LiLink2: Связано с
 - 
+
+```meta-bind-button
+label: Перейти в Literature hub
+icon: lucide-book-open
+hidden: true
+id: hub_nav_literature_hub
+style: primary
+tooltip: Открыть хаб Literature
+actions:
+  - type: open
+    link: "[[ZETTA/Literature/Literature hub]]"
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: default
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```

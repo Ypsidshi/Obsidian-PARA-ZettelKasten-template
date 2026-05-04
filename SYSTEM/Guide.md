@@ -30,7 +30,7 @@ cssclasses: [accent-nav-h2]
 
 1. **Утром** (при открытии Obsidian)
    - Открывается Dashboard автоматически
-   - Нажми **Daily** на Home, открой хаб [[HUB/Periodic hub|Цикл]] или используй `Ctrl+Shift+D`
+   - Нажми **Daily** на Home, открой хаб [[HUB/Periodic hub|Journal]] или используй `Ctrl+Shift+D`
    - Увидишь: список FLEETING, план на день, заметки из вчера
 
 2. **В течение дня**

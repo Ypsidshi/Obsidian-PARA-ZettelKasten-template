@@ -13,11 +13,14 @@ tags: [periodic/monthly]
 prev-month: "[[DAILY/Monthly/<% prevMonth %>]]"
 cssclasses:
   - dashboard
+  - nav-two
   - periodic-monthly
 obsidianUIMode: preview
 ---
 
 # <% monthName %>
+
+`BUTTON[nav_periodic_hub]` `BUTTON[hub_nav_home]`
 
 > [!periodic-nav]
 > [[DAILY/Monthly/<% prevMonth %>|← Прошлый месяц]] · **<% tp.date.now("YYYY-MM") %>** · [[DAILY/Monthly/<% nextMonth %>|Следующий месяц →]]
@@ -82,3 +85,28 @@ WHERE type = "literature" AND status = "done"
 *Конкретные изменения процесса, не общие пожелания.*
 
 - 
+
+```meta-bind-button
+label: Journal
+icon: lucide-notebook-pen
+hidden: true
+id: nav_periodic_hub
+style: primary
+tooltip: Хаб Daily / Weekly / Monthly (Periodic Notes)
+actions:
+  - type: open
+    link: "[[HUB/Periodic hub]]"
+```
+
+```meta-bind-button
+label: Домой
+icon: lucide-home
+hidden: true
+id: hub_nav_home
+style: default
+tooltip: Открыть Home
+actions:
+  - type: open
+    link: "[[HUB/Home]]"
+```
+
